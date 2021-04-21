@@ -31,6 +31,11 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	// OUR SQL DRIVER
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
+
 }
 
 dependencyManagement {

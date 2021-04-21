@@ -36,11 +36,11 @@ public class Post {
     @Column(name="posted_at")
     private String postedAt;
 
-    @OneToMany(mappedBy="post", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="post", fetch = FetchType.LAZY)
     @JsonManagedReference("postLikes")
     private List<Like> usersWhoLiked = new ArrayList<>();
 
-    @OneToMany(mappedBy = "commentPost",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "commentPost",fetch = FetchType.LAZY)
     @JsonManagedReference("postComments")
     private List<Comment> comments = new ArrayList<>();
 

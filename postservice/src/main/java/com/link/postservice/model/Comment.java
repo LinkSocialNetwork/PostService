@@ -7,7 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="comments")
+@Table(name ="post_comments")
 @Data
 @AllArgsConstructor
 public class Comment {
@@ -23,7 +23,7 @@ public class Comment {
     private String commentedAt;
 
 
-    @JoinColumn(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private int commentWriter;
 
     @ManyToOne

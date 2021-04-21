@@ -1,6 +1,6 @@
 package com.link.postservice.controller;
 
-import com.link.postservice.dao.PostDaoImpl;
+//import com.link.postservice.dao.PostDaoImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class PostController {
 
-    private PostDaoImpl postDao;
+//    private PostDaoImpl postDao;
 
 
     /*

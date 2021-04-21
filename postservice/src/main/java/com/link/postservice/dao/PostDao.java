@@ -1,5 +1,8 @@
 package com.link.postservice.dao;
 
-public class PostDao extends JpaRepository<Post, Integer> {
-
-}
+import com.link.postservice.model.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+//
+//public class PostDao extends JpaRepository<Post, Integer> {
+//
+//}

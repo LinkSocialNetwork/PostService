@@ -20,7 +20,7 @@ public class Like {
     //Because no guarantee that a user that likes a post
     //will have created a post beforehand for the foreign key constraint
     //to be consistent
-    @JoinColumn(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private int userId;
 
     @ManyToOne

@@ -2,6 +2,23 @@
 server:
   port: 0
 spring:
+  datasource:
+    url: jdbc:postgresql://${TRAINING_DB_ENDPOINT}/postservice
+    password: ${TRAINING_DB_PASSWORD}
+    username: ${TRAINING_DB_USERNAME}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
   application:
     name: postservice
 eureka:
@@ -14,22 +31,3 @@ eureka:
     instance-id:  ${spring.application.name}:${random.value}
     preferIpAddress: true
 
-
-      spring:
-        datasource:
-          url: jdbc:postgresql://${TRAINING_DB_ENDPOINT}/foodDB
-          password: ${TRAINING_DB_PASSWORD}
-          username: datachan
-          driver-class-name: org.postgresql.Driver
-        jpa:
-          database-platform: org.hibernate.dialect.PostgreSQLDialect
-          show-sql: false
-          hibernate:
-            ddl-auto: none
-          properties:
-            hibernate:
-              temp:
-                use_jdbc_metadata_defaults: false
-              jdbc:
-                lob:
-                  non_contextual_creation: true
