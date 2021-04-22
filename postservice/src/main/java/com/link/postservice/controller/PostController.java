@@ -14,8 +14,8 @@ public class PostController {
 
     /*
     @GetMapping(value="/all-posts")
-    public List<Post> getAllPosts(){
-        List<Post> postList = postDao.getAllPosts();
+    public List<Post.java> getAllPosts(){
+        List<Post.java> postList = postDao.getAllPosts();
         return postList;
     }
 */
