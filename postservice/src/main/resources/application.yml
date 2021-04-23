@@ -3,9 +3,9 @@ server:
   port: 0
 spring:
   datasource:
-    url: jdbc:postgresql://${TRAINING_DB_ENDPOINT}/postservice
-    password: ${TRAINING_DB_PASSWORD}
-    username: ${TRAINING_DB_USERNAME}
+    url: jdbc:postgresql://${LINK_DB_URI}/postservice
+    password: ${LINK_DB_PASSWORD}
+    username: ${LINK_DB_USERNAME}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
