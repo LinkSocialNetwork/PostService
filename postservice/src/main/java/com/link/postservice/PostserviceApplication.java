@@ -10,6 +10,7 @@ public class PostserviceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PostserviceApplication.class, args);
+
 	}
 
 }
