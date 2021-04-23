@@ -1,5 +1,6 @@
 package com.link.postservice.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
