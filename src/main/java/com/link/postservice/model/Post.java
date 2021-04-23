@@ -4,6 +4,7 @@ package com.link.postservice.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name="posts")
 @Data
+@ToString
 @AllArgsConstructor
 public class Post {
     @Id

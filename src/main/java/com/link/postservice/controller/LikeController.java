@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
-@RequestMapping("/likes")
+@RequestMapping("/api/likes")
 public class LikeController {
 
     private LikeDao likeDao;
