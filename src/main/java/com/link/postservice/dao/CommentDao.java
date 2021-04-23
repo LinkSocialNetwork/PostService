@@ -1,9 +1,7 @@
 package com.link.postservice.dao;
 
 import com.link.postservice.model.Comment;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-
 
 import java.util.List;
 
