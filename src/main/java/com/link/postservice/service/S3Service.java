@@ -47,9 +47,10 @@ public class S3Service {
      * @param file File object from HTTP request.
      */
 
-    public void uploadFile(String keyName, File file) {
+    public void uploadFile(String keyName, MultipartFile file) {
         try {
-            s3Client.putObject(bucketName, keyName, file);
+            
+            s3Client.putObject(new PutObjectRequest(bucketName, keyName, file.getInputStream(), new ObjectMetadata()));
 
         } catch (AmazonServiceException ase) {
 //            loggy.info("Caught an AmazonServiceException from PUT requests, rejected reasons:");
@@ -63,6 +64,8 @@ public class S3Service {
 //            loggy.info("Caught an AmazonClientException: ");
 //            loggy.info("Error Message: " + ace.getMessage());
             throw ace;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

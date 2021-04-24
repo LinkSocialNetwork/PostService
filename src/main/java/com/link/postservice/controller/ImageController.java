@@ -15,6 +15,7 @@ import java.io.IOException;
 
 @CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
 @RestController
+@RequestMapping("/api2")
 public class ImageController {
 
     private S3Service s3Service;
@@ -31,11 +32,12 @@ public class ImageController {
      * @throws IOException
      */
     @PostMapping("/img/upload")
-    public CustomResponseMessage uploadImg(@RequestBody MultipartFile file) throws IOException {
+    public CustomResponseMessage uploadImg(@RequestParam("file") MultipartFile file) throws IOException {
         String keyName = file.getOriginalFilename();
-        File file1 = new File(keyName);
-        file.transferTo(file1);
-        s3Service.uploadFile(keyName, file1);
+//        File file1 = new File(keyName);
+//        file.transferTo(file1);
+
+        s3Service.uploadFile(keyName, file);
 //        loggy.info("Uploaded file with name: "+keyName+" to the S3 bucket.");
         return new CustomResponseMessage(keyName);
     }
