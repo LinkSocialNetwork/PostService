@@ -32,6 +32,21 @@ public class PostController {
         postDao.save(post);
     }
 */
+
+    /** Author: Dang La
+     * Api endpoint that deletes a Post by passing its information to the appropriate method in the SERVICE layer
+     * @param postToBeDeleted The Post object to be deleted
+     *
+     */
+    @PostMapping(value="/deletePost")
+    public void deletePost (Post postToBeDeleted){
+        postService.deletePost(postToBeDeleted);
+    }
+
+
+
+
+
     public PostController(){}
 
     @Autowired

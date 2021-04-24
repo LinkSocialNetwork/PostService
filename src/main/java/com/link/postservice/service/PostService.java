@@ -23,6 +23,14 @@ public class PostService {
         return postDao.findAll();
     }
 
+    /** Author : Dang La
+    *   Passes Post object to DAO layer to be deleted.
+     * @param postToBeDeleted object
+    * */
+    public void deletePost(Post postToBeDeleted){
+         postDao.delete(postToBeDeleted);
+    }
+
 //    public PostService(PostDaoImpl postDao) {
 //        this.postDao = postDao;
 //    }
