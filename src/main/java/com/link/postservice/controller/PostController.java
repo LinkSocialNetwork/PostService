@@ -48,7 +48,7 @@ public class PostController {
      * Api endpoint that returns a list of posts from a given user.
      * @param
      */
-    @GetMapping(value="/getPostsCreatedByUser/{userID}")
+    @GetMapping(value="/getPostsCreatedByUser/{userId}")
     public List<Post> getPostsCreatedByUser(@PathVariable("userId") int userId) {
         return postService.getPostsCreatedByUser(userId);
     }

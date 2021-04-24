@@ -13,7 +13,7 @@ public interface PostDao extends JpaRepository<Post, Integer> {
     /** Authored by Sam Jenkins
      *
      */
-    List<Post> findAllByUserId(int userId);
-    
+    public List<Post> findAllByUserId(int userId);
+
     public Post findById(int id);
 }
