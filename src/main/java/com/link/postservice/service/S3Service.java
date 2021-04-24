@@ -34,7 +34,7 @@ public class S3Service {
     private String awsID = System.getenv("AWS_ID");
     private String awsKey = System.getenv("AWS_KEY");
 
-    private String region = System.getenv("AWS_REGION");
+    private String region = "us-east-2";
     private String bucketName = "linksocialnetworkbucket";
 
     BasicAWSCredentials awsCredentials = new BasicAWSCredentials(awsID, awsKey);
