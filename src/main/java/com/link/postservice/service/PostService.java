@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("PostService")
 public class PostService {
@@ -42,5 +43,11 @@ public class PostService {
 //        this.postDao = postDao;
 //    }
 //
+    public Post getPostById(int id){
+        return postDao.findById(id);
+    }
+    public void save(Post post){
+        postDao.save(post);
+    }
 
 }

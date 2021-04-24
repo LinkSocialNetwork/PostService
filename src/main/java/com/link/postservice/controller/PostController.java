@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
 @RequestMapping("/api/posts")
 public class PostController {
 
@@ -26,12 +26,12 @@ public class PostController {
     public List<Post> getAllPosts(){
         return postService.getAllPosts();
     }
-/*
+
     @PostMapping(value="/newposts")
     public void insertPost(@RequestBody Post post){
-        postDao.save(post);
+        postService.save(post);
     }
-*/
+
 
     /** Author: Dang La
      * Api endpoint that deletes a Post by passing its information to the appropriate method in the SERVICE layer
@@ -43,14 +43,23 @@ public class PostController {
         postService.deletePost(postToBeDeleted);
     }
 
+
     /** Author: Sam Jenkins
      * Api endpoint that returns a list of posts from a given user.
      * @param
      */
     @GetMapping(value="/getPostsCreatedByUser/{userID}")
-    public List<Post> getPostsCreatedByUser(int userId) {
+    public List<Post> getPostsCreatedByUser(@PathVariable("userId") int userId) {
         return postService.getPostsCreatedByUser(userId);
     }
+
+    @GetMapping(value="/getPostById/{postId}")
+    public Post getPostById(@PathVariable("postId") int id){
+        return postService.getPostById(id);
+    }
+
+
+
 
 
     public PostController(){}
