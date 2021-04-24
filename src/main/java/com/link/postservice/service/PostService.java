@@ -31,6 +31,13 @@ public class PostService {
          postDao.delete(postToBeDeleted);
     }
 
+    /** Author: Sam Jenkins
+     * Calls the Dao layer to retrieve posts created by a given user
+     */
+    public List<Post> getPostsCreatedByUser(int userId) {
+        return postDao.findAllByUserId(userId);
+    }
+
 //    public PostService(PostDaoImpl postDao) {
 //        this.postDao = postDao;
 //    }

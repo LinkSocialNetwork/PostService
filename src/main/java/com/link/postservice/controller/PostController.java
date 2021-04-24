@@ -43,8 +43,14 @@ public class PostController {
         postService.deletePost(postToBeDeleted);
     }
 
-
-
+    /** Author: Sam Jenkins
+     * Api endpoint that returns a list of posts from a given user.
+     * @param
+     */
+    @GetMapping(value="/getPostsCreatedByUser/{userID}")
+    public List<Post> getPostsCreatedByUser(int userId) {
+        return postService.getPostsCreatedByUser(userId);
+    }
 
 
     public PostController(){}
