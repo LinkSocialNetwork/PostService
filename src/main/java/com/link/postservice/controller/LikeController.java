@@ -1,6 +1,6 @@
 package com.link.postservice.controller;
 
-import com.link.postservice.dao.LikeDao;
+import com.link.postservice.dao.LikeService;
 import com.link.postservice.model.CustomResponseMessage;
 import com.link.postservice.model.Like;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +10,10 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
-@RequestMapping("/api/likes")
+@RequestMapping("/link/likes")
 public class LikeController {
 
-    private LikeDao likeDao;
+    private LikeService likeService;
 
 
     //constructor
@@ -21,17 +21,17 @@ public class LikeController {
     }
 
     @Autowired
-    public LikeController(LikeDao likeDao) {
-        this.likeDao = likeDao;
+    public LikeController(LikeService likeService) {
+        this.likeService = likeService;
     }
 
 
-    public LikeDao getLikeDao() {
-        return likeDao;
+    public LikeService getLikeService() {
+        return likeService;
     }
 
-    public void setLikeDao(LikeDao likeDao) {
-        this.likeDao = likeDao;
+    public void setLikeService(LikeService likeService) {
+        this.likeService = likeService;
     }
 
     /**
@@ -41,7 +41,18 @@ public class LikeController {
     @GetMapping(value = "/getAllLikes")
     public List<Like> getAllLikes(){
 //        loggy.info("Retrieving all Likes from the Service layer/database");
-        return likeDao.findAll();
+        return likeService.findAll();
+    }
+
+
+    /**
+     * retrieves an List of all Likes of a specific post from the SERVICE layer
+     * @return An ArrayList of Like objects
+     */
+    @GetMapping(value = "/getAllPostLikes/{postID}")
+    public List<Like> getAllPostLikes(@PathVariable("postId") int postID){
+//        loggy.info("Retrieving all Likes from the Service layer/database");
+        return likeService.findAllByPostPostId(postID);
     }
 
     /**
@@ -53,7 +64,7 @@ public class LikeController {
     @GetMapping(value = "/getLikesForPost/{postId}")
     public List<Like> getLikesForPost(@PathVariable("postId") int postId){
 //        loggy.info("Retrieving all Likes from the Service layer/database that are connected to the post with id: "+postId);
-        return likeDao.findAllByPostPostId(postId);
+        return likeService.findAllByPostPostId(postId);
     }
 
     /**
@@ -66,7 +77,7 @@ public class LikeController {
     @GetMapping(value = "/getLikesForPostSize/{postId}")
     public int getLikeCountForPost(@PathVariable("postId") int postId){
 //        loggy.info("Retrieving the number of Likes from the Service layer/in the database connected to the post with id: "+postId);
-        return likeDao.findAllByPostPostId(postId).size();
+        return likeService.findAllByPostPostId(postId).size();
     }
 
     /**
@@ -78,7 +89,7 @@ public class LikeController {
     @GetMapping(value = "/getLikesGivenByUser/{userId}")
     public List<Like> getLikesByUser(@PathVariable("userId") int userId){
 //        loggy.info("Retrieving all Likes from the Service layer/in the database created by the user with id: "+userId);
-        return likeDao.findAllByUserId(userId);
+        return likeService.findAllByUserId(userId);
     }
 
     /**
@@ -89,7 +100,7 @@ public class LikeController {
     //TODO: insertNewLike is currently redundant with update Like in terms of functionality
     @PostMapping(value = "/insertNewLike")
     public CustomResponseMessage insertNewLike(@RequestBody Like like){
-        likeDao.save(like);
+        likeService.save(like);
 //        loggy.info("Inserting a new Like into the database");
         return new CustomResponseMessage("Like was added.");
     }
@@ -102,7 +113,7 @@ public class LikeController {
      */
     @PutMapping(value = "/updateLike")
     public CustomResponseMessage updateLike(@RequestBody Like like){
-        likeDao.save(like);
+        likeService.save(like);
 //        loggy.info("Updating a Like in the database");
         return new CustomResponseMessage("Like was updated.");
     }
@@ -115,7 +126,7 @@ public class LikeController {
      */
     @PostMapping(value = "/deleteLike")
     public CustomResponseMessage deleteLike(@RequestBody Like like){
-        likeDao.delete(like);
+        likeService.delete(like);
 //        loggy.info("Deleting a Like in the database with id: "+like.getLikeId());
         return new CustomResponseMessage("Like was deleted.");
     }

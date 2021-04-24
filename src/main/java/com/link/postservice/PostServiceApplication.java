@@ -6,9 +6,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
 @SpringBootApplication
-public class PostserviceApplication {
+public class PostServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PostserviceApplication.class, args);
+		SpringApplication.run(PostServiceApplication.class, args);
 	}
 }
