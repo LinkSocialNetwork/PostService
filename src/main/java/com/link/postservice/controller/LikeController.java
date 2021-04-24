@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
-@RequestMapping("/link/likes")
+@RequestMapping("/api/likes")
 public class LikeController {
 
     private LikeService likeService;
@@ -97,11 +97,19 @@ public class LikeController {
      * @param like the new Like object to be inserted to the database
      * @return a confirmation message that the Like was inserted
      */
-    //TODO: insertNewLike is currently redundant with update Like in terms of functionality
     @PostMapping(value = "/insertNewLike")
     public CustomResponseMessage insertNewLike(@RequestBody Like like){
+
+        /*
+        * Tested by Kevin Childs on 4/24/2021 at 8:12am
+        * Successfully created a like on a post reference constraint
+        *
+        * checks to be added:
+        *   check if user id exists in user service
+        *   check if user already liked post
+        * */
+
         likeService.save(like);
-//        loggy.info("Inserting a new Like into the database");
         return new CustomResponseMessage("Like was added.");
     }
 

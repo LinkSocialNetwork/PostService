@@ -4,6 +4,7 @@ package com.link.postservice.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @Data
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Post {
     @Id
     @Column(name="post_id")
@@ -38,11 +40,11 @@ public class Post {
     @Column(name="posted_at")
     private String postedAt;
 
-    @OneToMany(mappedBy="post", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference("postLikes")
     private List<Like> usersWhoLiked = new ArrayList<>();
 
-    @OneToMany(mappedBy = "commentPost",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commentPost",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference("postComments")
     private List<Comment> comments = new ArrayList<>();
 
