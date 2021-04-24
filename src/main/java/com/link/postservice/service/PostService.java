@@ -50,4 +50,7 @@ public class PostService {
         postDao.save(post);
     }
 
+    public void updatePost(Post post){
+        postDao.save(post);
+    }
 }

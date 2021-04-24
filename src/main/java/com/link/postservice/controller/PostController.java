@@ -59,7 +59,17 @@ public class PostController {
     }
 
 
+    /**
+     * Author: Devin Kadrie
+     * Api endpoint that updates a post inside the DB to have the information stored in the parameter
+     * MAKE SURE TO PASS IN THE FULLY UPDATED OBJECT.
+     * @param changedPost The full post object that contains all of the update information
+     */
+    @PutMapping(value = "/updatePost")
+    public void updatePost(@RequestBody Post changedPost){
+        postService.updatePost(changedPost);
 
+    }
 
 
     public PostController(){}

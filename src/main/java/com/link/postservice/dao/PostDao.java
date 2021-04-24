@@ -16,4 +16,6 @@ public interface PostDao extends JpaRepository<Post, Integer> {
     public List<Post> findAllByUserId(int userId);
 
     public Post findById(int id);
+
+
 }
