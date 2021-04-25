@@ -29,4 +29,27 @@ public class Like {
     @JsonBackReference("postLikes")
     private Post post;
 
+    public int getLikeId() {
+        return likeId;
+    }
+
+    public void setLikeId(int likeId) {
+        this.likeId = likeId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }
