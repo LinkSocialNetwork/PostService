@@ -4,11 +4,13 @@ package com.link.postservice.controller;
 import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Comment;
 import com.link.postservice.model.Post;
+import com.link.postservice.service.LikeService;
 import com.link.postservice.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,6 +19,7 @@ import java.util.List;
 public class PostController {
 
     private PostService postService;
+    private LikeService likeService;
 
     /** Author: Michael Loutfi
      * Api endpoint that returns an Array list of Post objects from the service layer.
@@ -72,13 +75,26 @@ public class PostController {
 
     }
 
+    /**
+     * Author: So Morishima
+     * Gets all posts liked by user
+     * @param userId the id whom is targeted
+     * @return a list of posts that the targeted user liked
+     */
+
+    @GetMapping(value="/getPostsLikedByUser/{userId}")
+    public List<Post> getPostsLikedByUser(@PathVariable("userId") int userId) {
+
+
+        return likeService.getPostsLikedByUser(userId);
+    }
+
 
     public PostController(){}
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, LikeService likeService) {
         this.postService = postService;
+        this.likeService = likeService;
     }
-
-
 }

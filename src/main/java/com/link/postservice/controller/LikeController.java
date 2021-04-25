@@ -1,8 +1,8 @@
 package com.link.postservice.controller;
 
-import com.link.postservice.dao.LikeService;
 import com.link.postservice.model.CustomResponseMessage;
 import com.link.postservice.model.Like;
+import com.link.postservice.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,11 +61,11 @@ public class LikeController {
      * @param postId the Id number for a particular Post object
      * @return An ArrayList of Like Objects
      */
-    @GetMapping(value = "/getLikesForPost/{postId}")
+   /* @GetMapping(value = "/getLikesForPost/{postId}")
     public List<Like> getLikesForPost(@PathVariable("postId") int postId){
 //        loggy.info("Retrieving all Likes from the Service layer/database that are connected to the post with id: "+postId);
-        return likeService.findAllByPostPostId(postId);
-    }
+        return likeService.findAllByPostId(postId);
+    }*/
 
     /**
      * Retrieves the number of Like Objects associated with a particular Post object by
