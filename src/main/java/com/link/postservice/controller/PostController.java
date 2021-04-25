@@ -16,7 +16,7 @@ public class PostController {
     private PostService postService;
     private LikeService likeService;
 
-    /** Author: Michael Loutfi
+    /** Author: Nick Haselden
      * Api endpoint that returns an Array list of Post objects from the service layer.
      * Also, this endpoint maps the returned array list to a JSON in the HTTP response body.
      * @return Array list of all Post objects from all Users.
