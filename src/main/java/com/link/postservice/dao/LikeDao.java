@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-public interface LikeService extends JpaRepository<Like, Integer> {
+public interface LikeDao extends JpaRepository<Like, Integer> {
     //    public void insert(Like like);
 //    public void update(Like like);
 //    public void delete(Like like);
