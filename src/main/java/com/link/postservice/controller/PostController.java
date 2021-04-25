@@ -18,9 +18,10 @@ public class PostController {
 
     private PostService postService;
 
-    /**
+    /** Author: Michael Loutfi
      * Api endpoint that returns an Array list of Post objects from the service layer.
-     * @return Array list of all Post objects from all Users in the HTTP response body.
+     * Also, this endpoint maps the returned array list to a JSON in the HTTP response body.
+     * @return Array list of all Post objects from all Users.
      */
     @GetMapping(value="/getAllPosts")
     public List<Post> getAllPosts(){

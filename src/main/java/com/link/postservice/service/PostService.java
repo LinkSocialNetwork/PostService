@@ -20,6 +20,10 @@ public class PostService {
         this.postDao = postDao;
     }
 
+    /** Author: Michael Loutfi
+     * Service method that simply calls on the DAO layer to grab all existing post objects.
+     * @return Array list of Post objects.
+     */
     public List<Post> getAllPosts(){
         return postDao.findAll();
     }

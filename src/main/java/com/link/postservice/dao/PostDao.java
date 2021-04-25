@@ -17,5 +17,11 @@ public interface PostDao extends JpaRepository<Post, Integer> {
 
     public Post findById(int id);
 
+    /** Author: Michael Loutfi
+     * CRUD method (READ) - Uses hibernate to access Posts table from database and grabs all
+     * existing posts and maps it to a Java array list of Post objects.
+     * @return Array list of Post objects.
+     */
+    public List<Post> findAll();
 
 }
