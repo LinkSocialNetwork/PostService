@@ -43,8 +43,8 @@ public class LikeService {
 
     }
 
-    public void delete(Like like){
-        likeDao.delete(like);
+    public void delete(int likeId){
+        likeDao.deleteById(likeId);
     }
 
     /** @author Suliman Sam

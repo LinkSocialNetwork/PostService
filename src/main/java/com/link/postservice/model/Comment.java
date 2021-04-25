@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.link.postservice.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Table(name ="post_comments")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
 
     @Id
@@ -24,8 +26,9 @@ public class Comment {
     private String commentedAt;
 
 
-    @Column(name = "user_id", nullable = false)
-    private int commentWriter;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User commentWriter;
 
     @ManyToOne
     @JsonBackReference("postComments")

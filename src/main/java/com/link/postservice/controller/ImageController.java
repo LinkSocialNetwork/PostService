@@ -13,9 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
-@CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true", allowedHeaders = "true")
 @RestController
-@RequestMapping("/api2")
+@RequestMapping("/api/postservice")
 public class ImageController {
 
     private S3Service s3Service;
@@ -31,7 +31,7 @@ public class ImageController {
      * @return String containing the file name that was uploaded.
      * @throws IOException
      */
-    @PostMapping("/img/upload")
+    @PostMapping("/image")
     public CustomResponseMessage uploadImg(@RequestParam("file") MultipartFile file) throws IOException {
         String keyName = file.getOriginalFilename();
 //        File file1 = new File(keyName);

@@ -1,21 +1,16 @@
 package com.link.postservice.controller;
 
-//import com.link.postservice.dao.PostDaoImpl;
-import com.link.postservice.dao.PostDao;
-import com.link.postservice.model.Comment;
 import com.link.postservice.model.Post;
 import com.link.postservice.service.LikeService;
 import com.link.postservice.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true")
-@RequestMapping("/api/posts")
+@CrossOrigin(origins = "http://localhost:4200",  allowCredentials = "true", allowedHeaders = "true")
+@RequestMapping("/api/postservice")
 public class PostController {
 
     private PostService postService;
@@ -25,13 +20,20 @@ public class PostController {
      * Api endpoint that returns an Array list of Post objects from the service layer.
      * Also, this endpoint maps the returned array list to a JSON in the HTTP response body.
      * @return Array list of all Post objects from all Users.
+     *
+     * old url: /getAllPosts
      */
-    @GetMapping(value="/getAllPosts")
+    @GetMapping(value="/post")
     public List<Post> getAllPosts(){
         return postService.getAllPosts();
     }
 
-    @PostMapping(value="/newposts")
+
+    /**
+     * This endpoint creates a new post object in the posts table.
+     * old url: /newposts
+     */
+    @PostMapping(value="/post")
     public void insertPost(@RequestBody Post post){
         postService.save(post);
     }
@@ -39,27 +41,32 @@ public class PostController {
 
     /** Author: Dang La
      * Api endpoint that deletes a Post by passing its information to the appropriate method in the SERVICE layer
-     * @param postToBeDeleted The Post object to be deleted
+     * @param postId The Post id to be deleted
      *
+     * old url: /deletePost
      */
-    @PostMapping(value="/deletePost")
-    public void deletePost (Post postToBeDeleted){
-        postService.deletePost(postToBeDeleted);
+    @DeleteMapping(value="/post/{postId}")
+    public void deletePost (@PathVariable("postId") int postId){
+        postService.deletePost(postId);
     }
 
 
     /** Author: Sam Jenkins
      * Api endpoint that returns a list of posts from a given user.
-     * @param
+     * @param userId
      */
-    @GetMapping(value="/getPostsCreatedByUser/{userId}")
+    @GetMapping(value="/post/user/{userId}")
     public List<Post> getPostsCreatedByUser(@PathVariable("userId") int userId) {
         return postService.getPostsCreatedByUser(userId);
     }
 
-    @GetMapping(value="/getPostById/{postId}")
-    public Post getPostById(@PathVariable("postId") int id){
-        return postService.getPostById(id);
+    /**
+     * Api endpoint that returns gets one post given post id.
+     * @param postId
+     */
+    @GetMapping(value="/post/{postId}")
+    public Post getPostById(@PathVariable("postId") int postId){
+        return postService.getPostById(postId);
     }
 
 
@@ -69,10 +76,9 @@ public class PostController {
      * MAKE SURE TO PASS IN THE FULLY UPDATED OBJECT.
      * @param changedPost The full post object that contains all of the update information
      */
-    @PutMapping(value = "/updatePost")
+    @PutMapping(value = "/post")
     public void updatePost(@RequestBody Post changedPost){
         postService.updatePost(changedPost);
-
     }
 
     /**
@@ -80,11 +86,12 @@ public class PostController {
      * Gets all posts liked by user
      * @param userId the id whom is targeted
      * @return a list of posts that the targeted user liked
+     *
+     * **method might be deprecated / unneeded**
      */
 
     @GetMapping(value="/getPostsLikedByUser/{userId}")
     public List<Post> getPostsLikedByUser(@PathVariable("userId") int userId) {
-
 
         return likeService.getPostsLikedByUser(userId);
     }

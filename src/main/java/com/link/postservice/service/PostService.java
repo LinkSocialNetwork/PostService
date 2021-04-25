@@ -4,6 +4,7 @@ package com.link.postservice.service;
 
 import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Post;
+import com.link.postservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,17 +31,17 @@ public class PostService {
 
     /** Author : Dang La
     *   Passes Post object to DAO layer to be deleted.
-     * @param postToBeDeleted object
+     * @param postId object
     * */
-    public void deletePost(Post postToBeDeleted){
-         postDao.delete(postToBeDeleted);
+    public void deletePost(int postId){
+         postDao.deleteById(postId);
     }
 
     /** Author: Sam Jenkins
      * Calls the Dao layer to retrieve posts created by a given user
      */
     public List<Post> getPostsCreatedByUser(int userId) {
-        return postDao.findAllByUserId(userId);
+        return postDao.findAllByUserUserId(userId);
     }
 
 //    public PostService(PostDaoImpl postDao) {
@@ -50,6 +51,8 @@ public class PostService {
     public Post getPostById(int id){
         return postDao.findById(id);
     }
+
+
     public void save(Post post){
         postDao.save(post);
     }

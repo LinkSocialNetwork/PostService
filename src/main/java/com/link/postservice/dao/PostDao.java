@@ -1,19 +1,20 @@
 package com.link.postservice.dao;
 
 import com.link.postservice.model.Post;
+import com.link.postservice.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("postDao")
 public interface PostDao extends JpaRepository<Post, Integer> {
 
     /** Authored by Sam Jenkins
      *
      */
-    public List<Post> findAllByUserId(int userId);
+    public List<Post> findAllByUserUserId(int userId);
 
     public Post findById(int id);
 

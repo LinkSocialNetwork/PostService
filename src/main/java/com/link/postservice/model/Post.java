@@ -23,8 +23,10 @@ public class Post {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int postId;
 
-    @Column(name="user_id", nullable = false)
-    private int userId;
+    //@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     @Column(name="post_content")
     private String postContent;

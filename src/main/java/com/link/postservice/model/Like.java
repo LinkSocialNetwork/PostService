@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.link.postservice.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "likes")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Like {
     @Id
     @Column(name = "like_id")
