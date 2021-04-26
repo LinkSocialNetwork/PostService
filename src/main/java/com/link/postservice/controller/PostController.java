@@ -27,6 +27,14 @@ public class PostController {
         return postService.getAllPosts();
     }
 
+    /**
+     * GetAllPosts
+     */
+    @GetMapping(value="/post/twenty/{number}")
+    public List<Post> getTwentyPosts(@PathVariable Integer number){
+        return postService.getTwentyPosts(number);
+    }
+
 
     /**
      * This endpoint creates a new post object in the posts table.

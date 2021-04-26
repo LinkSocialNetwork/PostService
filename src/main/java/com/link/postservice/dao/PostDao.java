@@ -2,14 +2,17 @@ package com.link.postservice.dao;
 
 import com.link.postservice.model.Post;
 import com.link.postservice.model.User;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @Repository("postDao")
-public interface PostDao extends JpaRepository<Post, Integer> {
+public interface PostDao extends JpaRepository<Post, Integer>{
 
     /** Authored by Sam Jenkins
      *
@@ -23,6 +26,10 @@ public interface PostDao extends JpaRepository<Post, Integer> {
      * existing posts and maps it to a Java array list of Post objects.
      * @return Array list of Post objects.
      */
-    public List<Post> findAll();
+    //public List<Post> findAll();
+
+    //pagination
+    @Override
+    public Page<Post> findAll(Pageable pageable);
 
 }
