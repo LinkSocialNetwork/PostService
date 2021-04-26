@@ -1,5 +1,8 @@
 package com.link.postservice.controller;
 
+
+import com.link.postservice.model.Comment;
+import com.link.postservice.model.Like;
 import com.link.postservice.model.Post;
 import com.link.postservice.model.User;
 import com.link.postservice.service.LikeService;
@@ -13,6 +16,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,23 +25,52 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-class PostControllerTest {
+public class PostControllerTest {
 
-    PostController myCont;
-
-    @Mock
-    PostService postServ;
+    PostController postController;
 
     @Mock
-    LikeService likeServ;
+    PostService postService;
+
+    @Mock
+    LikeService likeService;
 
     @BeforeEach
-    void setUp() {
-        myCont = new PostController(postServ, likeServ);
+    void setUp(){
+        postController = new PostController(postService, likeService);
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown(){}
+
+    @Test
+    void insertPost(){
+        User user = new User();
+        List<Like> likes = new ArrayList<Like>();
+        List<Comment> comments= new ArrayList<Comment>();
+        Post post = new Post(
+                1,
+                user,
+                "test body",
+                "test img url",
+                "test youtube url",
+                "test time",
+                likes,
+                comments
+        );
+
+        postController.insertPost(post);
+        Mockito.verify(postService).save(post);
+    }
+
+    @Test
+    void updatePost() {
+        Post post = new Post();
+
+        postController.updatePost(post);
+
+        Mockito.verify(postService).updatePost(post);
+
     }
 
     @Test
@@ -59,12 +93,13 @@ class PostControllerTest {
         postList.add(p1);
         postList.add(p2);
 
-        Mockito.when(postServ.getPostsCreatedByUser(u.getUserId())).thenReturn(postList);
+        Mockito.when(postService.getPostsCreatedByUser(u.getUserId())).thenReturn(postList);
 
-        List<Post> actualReturn = myCont.getPostsCreatedByUser(u.getUserId());
+        List<Post> actualReturn = postController.getPostsCreatedByUser(u.getUserId());
 
-        Mockito.verify(postServ).getPostsCreatedByUser(u.getUserId());
+        Mockito.verify(postService).getPostsCreatedByUser(u.getUserId());
 
         assertEquals(postList, actualReturn);
     }
+
 }

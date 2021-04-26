@@ -1,12 +1,15 @@
 package com.link.postservice.service;
 
 import com.link.postservice.dao.PostDao;
+import com.link.postservice.model.Comment;
+import com.link.postservice.model.Like;
 import com.link.postservice.model.Post;
 import com.link.postservice.model.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,20 +22,52 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-class PostServiceTest {
+public class PostServiceTest {
 
-    private PostService postServ;
+    PostService postService;
 
     @Mock
-    private PostDao postDao;
+    PostDao postDao;
 
     @BeforeEach
-    void setUp() {
-        postServ = new PostService(postDao);
+    void setUp(){
+        postService = new PostService(postDao);
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown(){}
+
+    @Test
+    void save(){
+        User user = new User();
+        List<Like> likes = new ArrayList<Like>();
+        List<Comment> comments= new ArrayList<Comment>();
+        Post post = new Post(
+                2,
+                user,
+                "test body",
+                "test img url",
+                "test youtube url",
+                "test time",
+                likes,
+                comments
+        );
+
+        postService.save(post);
+        Mockito.verify(postDao).save(post);
+    }
+
+    @Test
+    void updatePost() {
+        Post testPost = new Post();
+
+        Mockito.when(postDao.save(testPost)).thenReturn(testPost);
+        postService.updatePost(testPost);
+
+        ArgumentCaptor<Post> myCaptor = ArgumentCaptor.forClass(Post.class);
+
+        Mockito.verify(postDao).save(myCaptor.capture());
+
     }
 
     @Test
@@ -57,10 +92,11 @@ class PostServiceTest {
 
         Mockito.when(postDao.findAllByUserUserId(u.getUserId())).thenReturn(postList);
 
-        List<Post> actualReturn = postServ.getPostsCreatedByUser(u.getUserId());
+        List<Post> actualReturn = postService.getPostsCreatedByUser(u.getUserId());
 
         Mockito.verify(postDao).findAllByUserUserId(u.getUserId());
 
         assertEquals(postList, actualReturn);
     }
+
 }

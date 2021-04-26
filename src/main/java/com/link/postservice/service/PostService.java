@@ -14,6 +14,7 @@ public class PostService {
 
     PostDao postDao;
 
+    public PostService(){}
     @Autowired
     public PostService(PostDao postDao) {
         this.postDao = postDao;
