@@ -2,10 +2,7 @@ package com.link.postservice.model;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ import java.util.List;
 @Data
 @ToString
 @AllArgsConstructor
+@EqualsAndHashCode
 @NoArgsConstructor
 public class Post {
     @Id
