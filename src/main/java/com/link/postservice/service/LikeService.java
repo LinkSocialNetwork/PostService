@@ -42,7 +42,9 @@ public class LikeService {
         likeDao.save(like);
 
     }
-
+    public Like getLikeById(int id){
+        return likeDao.findById(id);
+    }
     public void delete(int likeId){
         likeDao.deleteById(likeId);
     }
