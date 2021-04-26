@@ -6,6 +6,9 @@ import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Post;
 import com.link.postservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +30,15 @@ public class PostService {
      */
     public List<Post> getAllPosts(){
         return postDao.findAll();
+    }
+
+    /**
+     * For pagination
+     */
+    public List<Post> getTwentyPosts(Integer posts){
+        Pageable pages = PageRequest.of(0, 2);
+        Page<Post> dynamicPost = postDao.findAll(pages);
+        return dynamicPost.getContent();
     }
 
     /** Author : Dang La
