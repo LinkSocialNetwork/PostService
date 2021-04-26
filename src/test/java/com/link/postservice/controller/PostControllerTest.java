@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +23,17 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 public class PostControllerTest {
 
-    PostController pc;
+    PostController postController;
 
     @Mock
-    PostService ps;
+    PostService postService;
 
     @Mock
-    LikeService ls;
+    LikeService likeService;
 
     @BeforeEach
     void setUp(){
-        pc = new PostController(ps, ls);
+        postController = new PostController(postService, likeService);
     }
 
     @AfterEach
@@ -54,8 +55,18 @@ public class PostControllerTest {
                 comments
         );
 
-        pc.insertPost(post);
-        Mockito.verify(ps).save(post);
+        postController.insertPost(post);
+        Mockito.verify(postService).save(post);
+    }
+
+    @Test
+    void updatePost() {
+        Post post = new Post();
+
+        postController.updatePost(post);
+
+        Mockito.verify(postService).updatePost(post);
+
     }
 
 }

@@ -9,11 +9,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +21,14 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 public class PostServiceTest {
 
-    PostService ps;
+    PostService postService;
 
     @Mock
-    PostDao pd;
+    PostDao postDao;
 
     @BeforeEach
     void setUp(){
-        ps = new PostService(pd);
+        postService = new PostService(postDao);
     }
 
     @AfterEach
@@ -50,8 +50,21 @@ public class PostServiceTest {
                 comments
         );
 
-        ps.save(post);
-        Mockito.verify(pd).save(post);
+        postService.save(post);
+        Mockito.verify(postDao).save(post);
+    }
+
+    @Test
+    void updatePost() {
+        Post testPost = new Post();
+
+        Mockito.when(postDao.save(testPost)).thenReturn(testPost);
+        postService.updatePost(testPost);
+
+        ArgumentCaptor<Post> myCaptor = ArgumentCaptor.forClass(Post.class);
+
+        Mockito.verify(postDao).save(myCaptor.capture());
+
     }
 
 }
