@@ -114,7 +114,27 @@ public class PostServiceTest {
         assertEquals(postList, actualReturn);
     }
 
+    @Test
+    void getPostById() {
 
+        User myUser = new User();
+        List<Like> likeList = new ArrayList<>();
+        List<Comment> comsList = new ArrayList<>();
+        Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
+
+        Mockito.when(postDao.findById(myPost.getPostId())).thenReturn(myPost);
+
+        Post testPost = postService.getPostById(1);
+
+        Mockito.verify(postDao).findById(1);
+
+        assertEquals(myPost, testPost);
+    }
+
+
+<<<<<<< HEAD
+}
+=======
     @Test
     void getAll	() {
         //Create two post for Mockito to test
@@ -149,3 +169,4 @@ public class PostServiceTest {
 
 }
 
+>>>>>>> 418cd5b5499c01374ac89bb8584e510165bb0a56
