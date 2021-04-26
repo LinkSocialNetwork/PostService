@@ -1,9 +1,6 @@
 package com.link.postservice.controller;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9443d6bf107fcee7f7d4479c9ceaa4ead27b44a4
 import com.link.postservice.model.Comment;
 import com.link.postservice.model.Like;
 import com.link.postservice.model.Post;
@@ -19,11 +16,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-<<<<<<< HEAD
-=======
 import static org.junit.jupiter.api.Assertions.*;
 
->>>>>>> 9443d6bf107fcee7f7d4479c9ceaa4ead27b44a4
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,43 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-<<<<<<< HEAD
 class PostControllerTest {
 
-    PostController postCont;
-
-    @Mock
-    PostService postServ;
-    @Mock
-    LikeService likeServ;
-
-    @BeforeEach
-    void setUp() {
-        postCont = new PostController(postServ, likeServ);
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void getPostById() {
-        User myUser = new User();
-        List<Like> likeList = new ArrayList<>();
-        List<Comment> comsList = new ArrayList<>();
-        Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
-
-        Mockito.when(postServ.getPostById(myPost.getPostId())).thenReturn(myPost);
-
-        Post testPost = postCont.getPostById(1);
-
-        Mockito.verify(postServ).getPostById(1);
-
-        assertEquals(myPost, testPost);
-
-    }
-=======
-public class PostControllerTest {
 
     PostController postController;
 
@@ -144,5 +104,21 @@ public class PostControllerTest {
         assertEquals(postList, actualReturn);
     }
 
->>>>>>> 9443d6bf107fcee7f7d4479c9ceaa4ead27b44a4
+    @Test
+    void getPostById() {
+        User myUser = new User();
+        List<Like> likeList = new ArrayList<>();
+        List<Comment> comsList = new ArrayList<>();
+        Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
+
+        Mockito.when(postService.getPostById(myPost.getPostId())).thenReturn(myPost);
+
+        Post testPost = postController.getPostById(1);
+
+        Mockito.verify(postService).getPostById(1);
+
+        assertEquals(myPost, testPost);
+
+    }
+
 }
