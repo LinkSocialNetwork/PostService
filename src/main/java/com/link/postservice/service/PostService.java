@@ -4,12 +4,10 @@ package com.link.postservice.service;
 
 import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Post;
-import com.link.postservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service("PostService")
 public class PostService {
