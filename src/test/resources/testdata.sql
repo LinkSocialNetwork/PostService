@@ -1,0 +1,1 @@
+INSERT INTO posts (post_string) VALUES ('my first post');

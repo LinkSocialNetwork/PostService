@@ -132,9 +132,7 @@ public class PostServiceTest {
     }
 
 
-<<<<<<< HEAD
-}
-=======
+
     @Test
     void getAll	() {
         //Create two post for Mockito to test
@@ -169,4 +167,3 @@ public class PostServiceTest {
 
 }
 
->>>>>>> 418cd5b5499c01374ac89bb8584e510165bb0a56
