@@ -15,6 +15,8 @@ public class UserService {
         this.userDao = userDao;
     }
 
+    //----------------------------------------------------------------------------------------------//
+
     /**
      * <p>Calls user dao to create a user object</p>
      * @param user - The user to create
@@ -22,4 +24,26 @@ public class UserService {
     public void duplicateUser(User user){
         userDao.save(user);
     }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>Updates a users information</p>
+     * @param user - The user information to update
+     */
+    public void updateUser(User user){
+        userDao.save(user);
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>A method to delete a user by its id</p>
+     * @param userId - The id of the user to delete
+     */
+    public void deleteUser(int userId){
+        User user = userDao.findById(userId);
+        userDao.delete(user);
+    }
+
 }

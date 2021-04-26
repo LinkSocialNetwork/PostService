@@ -120,5 +120,4 @@ class PostControllerTest {
         assertEquals(myPost, testPost);
 
     }
-
 }
