@@ -28,11 +28,13 @@ public class PostServiceTest {
     private PostDao postDao;
 
     private PostService postService;
+
     @BeforeEach
     void setUp() {
         postService = new PostService(postDao);
 
     }
+
     @Test
     void deletePost() {
         List<Comment> comments = new ArrayList<>();
@@ -48,9 +50,6 @@ public class PostServiceTest {
 
     }
 
-
-    @AfterEach
-    void tearDown(){}
 
     @Test
     void save(){
@@ -167,3 +166,7 @@ public class PostServiceTest {
 
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae531fb92e12b07d87d5fdc6729d0e247e63d36f

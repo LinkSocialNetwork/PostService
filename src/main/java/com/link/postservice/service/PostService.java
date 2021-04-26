@@ -35,7 +35,7 @@ public class PostService {
      * For pagination
      */
     public List<Post> getTwentyPosts(Integer posts){
-        Pageable pages = PageRequest.of(0, 2);
+        Pageable pages = PageRequest.of(posts, 3);
         Page<Post> dynamicPost = postDao.findAll(pages);
         return dynamicPost.getContent();
     }
