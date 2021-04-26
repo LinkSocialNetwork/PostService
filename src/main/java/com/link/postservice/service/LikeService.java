@@ -38,9 +38,8 @@ public class LikeService {
         return likeDao.findAllByUserId(userID);
     }
 
-    public void save(Like like){
-        likeDao.save(like);
-
+    public Like save(Like like){
+        return likeDao.save(like);
     }
     public Like getLikeById(int id){
         return likeDao.findById(id);

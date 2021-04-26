@@ -46,4 +46,13 @@ public class LikeServiceTest {
 
     }
 
+
+    @Test
+    void insertLike(){
+        Post aPost = new Post();
+        Like aLike = new Like(1,1,aPost);
+        Mockito.when(likeDao.save(aLike)).thenReturn(aLike);
+        assertEquals(aLike, likeService.save(aLike));
+    }
+
 }
