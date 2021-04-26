@@ -46,7 +46,6 @@ public class LikeServiceTest {
 
     }
 
-
     @Test
     void insertLike(){
         Post aPost = new Post();

@@ -41,6 +41,7 @@ public class LikeService {
     public Like save(Like like){
         return likeDao.save(like);
     }
+
     public Like getLikeById(int id){
         return likeDao.findById(id);
     }

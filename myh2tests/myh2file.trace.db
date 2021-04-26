@@ -689,7 +689,11 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1165)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+<<<<<<< HEAD
 2021-04-26 12:26:34 database: flush
+=======
+2021-04-26 13:00:57 database: flush
+>>>>>>> insertLikeTests
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/matthew/Documents/Link/PostService/myh2tests/myh2file.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.get(DbException.java:194)
 	at org.h2.message.DbException.convert(DbException.java:347)
@@ -741,6 +745,7 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1165)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+<<<<<<< HEAD
 2021-04-26 12:28:37 database: flush
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/matthew/Documents/Link/PostService/myh2tests/myh2file.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.get(DbException.java:194)
@@ -1314,6 +1319,9 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
 2021-04-26 12:53:56 database: flush
+=======
+2021-04-26 13:00:58 database: flush
+>>>>>>> insertLikeTests
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/matthew/Documents/Link/PostService/myh2tests/myh2file.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.get(DbException.java:194)
 	at org.h2.message.DbException.convert(DbException.java:347)
