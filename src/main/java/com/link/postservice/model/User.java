@@ -1,5 +1,7 @@
 package com.link.postservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="posts_users")

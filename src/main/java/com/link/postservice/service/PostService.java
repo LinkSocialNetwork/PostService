@@ -10,6 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @Service("PostService")
@@ -34,9 +37,16 @@ public class PostService {
     /**
      * For pagination
      */
-    public List<Post> getTwentyPosts(Integer posts){
-        Pageable pages = PageRequest.of(posts, 3);
+    public List<Post> getTwentyPosts(Integer page){
+        Pageable pages = PageRequest.of(page, 3);
         Page<Post> dynamicPost = postDao.findAll(pages);
+        return dynamicPost.getContent();
+    }
+    public List<Post> getFollowingPosts(Integer page){
+        Pageable pages = PageRequest.of(page, 3);
+        //TODO: Change so this makes a request instead of "new ArrayList<>(Arrays.asList(1,3))"
+        ArrayList<Integer> followingUserIDs = new ArrayList<>(Arrays.asList(1,3));
+        Page<Post> dynamicPost = postDao.findByUserUserIdIn(followingUserIDs, pages);
         return dynamicPost.getContent();
     }
 

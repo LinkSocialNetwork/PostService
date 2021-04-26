@@ -9,6 +9,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Repository("postDao")
@@ -31,5 +34,7 @@ public interface PostDao extends JpaRepository<Post, Integer>{
     //pagination
     @Override
     public Page<Post> findAll(Pageable pageable);
+    public Page<Post> findByUserUserIdIn(ArrayList<Integer> followingUserIDs, Pageable aPageableObject);
+
 
 }

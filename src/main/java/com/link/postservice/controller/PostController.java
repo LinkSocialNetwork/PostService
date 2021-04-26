@@ -30,9 +30,9 @@ public class PostController {
     /**
      * GetAllPosts
      */
-    @GetMapping(value="/post/twenty/{number}")
+    @GetMapping(value="/post/page/{number}")
     public List<Post> getTwentyPosts(@PathVariable Integer number){
-        return postService.getTwentyPosts(number);
+        return postService.getFollowingPosts(number);
     }
 
 
