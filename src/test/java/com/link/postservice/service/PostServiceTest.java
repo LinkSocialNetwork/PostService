@@ -165,8 +165,3 @@ public class PostServiceTest {
     }
 
 }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ae531fb92e12b07d87d5fdc6729d0e247e63d36f
