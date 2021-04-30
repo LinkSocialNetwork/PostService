@@ -78,7 +78,7 @@ class PostControllerTest {
     @Test
     void getPostsCreatedByUser() {
         User u = new User();
-        u.setUserId(1);
+        u.setUserID(1);
 
         List<Post> postList = new ArrayList<>();
 
@@ -95,11 +95,11 @@ class PostControllerTest {
         postList.add(p1);
         postList.add(p2);
 
-        Mockito.when(postService.getPostsCreatedByUser(u.getUserId())).thenReturn(postList);
+        Mockito.when(postService.getPostsCreatedByUser(u.getUserID())).thenReturn(postList);
 
-        List<Post> actualReturn = postController.getPostsCreatedByUser(u.getUserId());
+        List<Post> actualReturn = postController.getPostsCreatedByUser(u.getUserID());
 
-        Mockito.verify(postService).getPostsCreatedByUser(u.getUserId());
+        Mockito.verify(postService).getPostsCreatedByUser(u.getUserID());
 
         assertEquals(postList, actualReturn);
     }
@@ -111,11 +111,11 @@ class PostControllerTest {
         List<Comment> comsList = new ArrayList<>();
         Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
 
-        Mockito.when(postService.getPostById(myPost.getPostId())).thenReturn(myPost);
+        Mockito.when(postService.getPostByID(myPost.getPostId())).thenReturn(myPost);
 
         Post testPost = postController.getPostById(1);
 
-        Mockito.verify(postService).getPostById(1);
+        Mockito.verify(postService).getPostByID(1);
 
         assertEquals(myPost, testPost);
 
