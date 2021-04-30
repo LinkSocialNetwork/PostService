@@ -28,7 +28,7 @@ public class PostController {
     }
 
     /**
-     * GetAllPosts
+     * GetAllPosts paginated in intervals of twenty per page
      */
     @GetMapping(value="/post/page/{number}")
     public List<Post> getTwentyPosts(@PathVariable Integer number){
