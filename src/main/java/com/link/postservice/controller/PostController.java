@@ -73,7 +73,7 @@ public class PostController {
      */
     @GetMapping(value="/post/{postId}")
     public Post getPostById(@PathVariable("postId") int postId){
-        return postService.getPostById(postId);
+        return postService.getPostByID(postId);
     }
 
 
