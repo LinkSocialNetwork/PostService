@@ -45,7 +45,7 @@ public class PostServiceTest {
         Post aNullPost = null;
         postService.deletePost(myPost.getPostId());
         Mockito.verify(postDao).deleteById(myPost.getPostId());
-        myPost = postService.getPostById(myPost.getPostId());
+        myPost = postService.getPostByID(myPost.getPostId());
         assertEquals(aNullPost, myPost);
 
     }
@@ -87,7 +87,7 @@ public class PostServiceTest {
     @Test
     void getPostsCreatedByUser() {
         User u = new User();
-        u.setUserId(1);
+        u.setUserID(1);
 
         List<Post> postList = new ArrayList<>();
 
@@ -104,11 +104,11 @@ public class PostServiceTest {
         postList.add(p1);
         postList.add(p2);
 
-        Mockito.when(postDao.findAllByUserUserId(u.getUserId())).thenReturn(postList);
+        Mockito.when(postDao.findAllByUserUserId(u.getUserID())).thenReturn(postList);
 
-        List<Post> actualReturn = postService.getPostsCreatedByUser(u.getUserId());
+        List<Post> actualReturn = postService.getPostsCreatedByUser(u.getUserID());
 
-        Mockito.verify(postDao).findAllByUserUserId(u.getUserId());
+        Mockito.verify(postDao).findAllByUserUserId(u.getUserID());
 
         assertEquals(postList, actualReturn);
     }
@@ -123,7 +123,7 @@ public class PostServiceTest {
 
         Mockito.when(postDao.findById(myPost.getPostId())).thenReturn(myPost);
 
-        Post testPost = postService.getPostById(1);
+        Post testPost = postService.getPostByID(1);
 
         Mockito.verify(postDao).findById(1);
 

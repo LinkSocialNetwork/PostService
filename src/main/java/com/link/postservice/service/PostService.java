@@ -46,7 +46,7 @@ public class PostService {
         Pageable pages = PageRequest.of(page, 3);
         //TODO: Change so this makes a request instead of "new ArrayList<>(Arrays.asList(1,3))"
         ArrayList<Integer> followingUserIDs = new ArrayList<>(Arrays.asList(1,3));
-        Page<Post> dynamicPost = postDao.findByUserUserIdIn(followingUserIDs, pages);
+        Page<Post> dynamicPost = postDao.findByUserUserIDIn(followingUserIDs, pages);
         return dynamicPost.getContent();
     }
 
@@ -62,14 +62,14 @@ public class PostService {
      * Calls the Dao layer to retrieve posts created by a given user
      */
     public List<Post> getPostsCreatedByUser(int userId) {
-        return postDao.findAllByUserUserId(userId);
+        return postDao.findAllByUserUserID(userId);
     }
 
 //    public PostService(PostDaoImpl postDao) {
 //        this.postDao = postDao;
 //    }
 //
-    public Post getPostById(int id){
+    public Post getPostByID(int id){
         return postDao.findById(id);
     }
 
