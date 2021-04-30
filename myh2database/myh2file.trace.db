@@ -1,0 +1,12 @@
+2021-04-29 09:36:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LIKES" not found; SQL statement:
+alter table likes drop constraint FKrh3p3847jjw2f16hy4rjroqvv [42102-200]
+2021-04-29 09:36:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POST_COMMENTS" not found; SQL statement:
+alter table post_comments drop constraint FKaawaqxjs3br8dw5v90w7uu514 [42102-200]
+2021-04-29 09:36:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POST_COMMENTS" not found; SQL statement:
+alter table post_comments drop constraint FK4975mwgq01e0avax0bey351ye [42102-200]
+2021-04-29 09:36:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POSTS" not found; SQL statement:
+alter table posts drop constraint FKkrnpin5iffmo8ykg450njuv1m [42102-200]
