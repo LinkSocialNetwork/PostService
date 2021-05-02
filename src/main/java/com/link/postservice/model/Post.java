@@ -21,8 +21,8 @@ public class Post {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int postId;
 
-    //@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @ManyToOne
+    @ManyToOne(cascade =CascadeType.MERGE,fetch = FetchType.EAGER)
+//    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="user_id")
     private User user;
 
@@ -34,7 +34,6 @@ public class Post {
 
     @Column (name="youtube_link")
     private String youtubeUrl;
-
 
     //????
     @Column(name="posted_at")

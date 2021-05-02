@@ -49,7 +49,7 @@ public class S3Service {
 
     public void uploadFile(String keyName, MultipartFile file) {
         try {
-            
+
             s3Client.putObject(new PutObjectRequest(bucketName, keyName, file.getInputStream(), new ObjectMetadata()));
 
         } catch (AmazonServiceException ase) {
