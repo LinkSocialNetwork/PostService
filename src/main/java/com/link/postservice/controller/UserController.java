@@ -4,6 +4,8 @@ import com.link.postservice.model.User;
 import com.link.postservice.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/postservice")
 public class UserController {
@@ -12,6 +14,15 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+
+    /**
+     * <p>get all users in the post service</p>
+     */
+    @GetMapping("/user")
+    public List<User> getAllUsers(){
+        return userService.getAll();
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -30,9 +41,13 @@ public class UserController {
     /**
      * <p>An endpoint to update user in database</p>
      * @param user - The user information to update
+     *
+     *             http://localhost:9080/api/postservice/updateUser
      */
     @PutMapping("/updateUser")
     public void updateUser(@RequestBody User user) {
+
+        System.out.println("UPDATE USER" + user);
         userService.updateUser(user);
     }
 
