@@ -23,8 +23,9 @@ public class UserService {
      * <p>Calls user dao to create a user object</p>
      * @param user - The user to create
      */
-    public void duplicateUser(User user){
-        userDao.save(user);
+    public User duplicateUser(User user){
+
+        return userDao.save(user);
     }
 
     //----------------------------------------------------------------------------------------------//

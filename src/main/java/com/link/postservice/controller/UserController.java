@@ -32,8 +32,8 @@ public class UserController {
      * @param user - The user to make
      */
     @PostMapping("/duplicateUser")
-    public void createUser(@RequestBody User user){
-        userService.duplicateUser(user);
+    public User createUser(@RequestBody User user){
+        return userService.duplicateUser(user);
     }
 
     //----------------------------------------------------------------------------------------------//
