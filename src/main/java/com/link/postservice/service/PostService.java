@@ -4,12 +4,15 @@ package com.link.postservice.service;
 
 import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Post;
+import com.link.postservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -42,11 +45,25 @@ public class PostService {
         Page<Post> dynamicPost = postDao.findAll(pages);
         return dynamicPost.getContent();
     }
-    public List<Post> getFollowingPosts(Integer page){
+    public List<Post> getFollowingPosts(Integer userId, Integer page){
+
+        RestTemplate restTemplate = new RestTemplate();
+        List<User> followingUsers = new ArrayList<>();
+        followingUsers = Arrays.asList(restTemplate.getForEntity("http://localhost:9080/api/userservice/follow/followee/"+userId, User[].class).getBody());
+        System.out.println(followingUsers);
         Pageable pages = PageRequest.of(page, 3);
         //TODO: Change so this makes a request instead of "new ArrayList<>(Arrays.asList(1,3))"
-        ArrayList<Integer> followingUserIDs = new ArrayList<>(Arrays.asList(1,3));
+//        ArrayList<Integer> followingUserIDs = new ArrayList<>(Arrays.asList(1,3));
+        ArrayList<Integer> followingUserIDs = new ArrayList<>();
+        for (User u : followingUsers) {
+            followingUserIDs.add(u.getUserID());
+        }
+        followingUserIDs.add(userId);
+        System.out.println("souting followingUserIDs");
+        System.out.println(followingUserIDs);
         Page<Post> dynamicPost = postDao.findByUserUserIDIn(followingUserIDs, pages);
+        System.out.println("souting dynamicPost");
+        System.out.println(dynamicPost);
         return dynamicPost.getContent();
     }
 

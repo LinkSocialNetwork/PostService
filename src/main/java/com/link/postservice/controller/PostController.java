@@ -30,9 +30,9 @@ public class PostController {
     /**
      * GetAllPosts paginated in intervals of twenty per page
      */
-    @GetMapping(value="/post/page/{number}")
-    public List<Post> getTwentyPosts(@PathVariable Integer number){
-        return postService.getFollowingPosts(number);
+    @GetMapping(value="/post/user/{userId}/page/{number}")
+    public List<Post> getTwentyPosts(@PathVariable Integer userId , @PathVariable Integer number){
+        return postService.getFollowingPosts(userId, number);
     }
 
 
