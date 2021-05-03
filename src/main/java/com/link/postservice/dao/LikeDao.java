@@ -13,6 +13,6 @@ public interface LikeDao extends JpaRepository<Like, Integer> {
 //    public Like findById(int LikeId);
 //    public List<Like> findAll();
     public List<Like> findAllByPostPostId(int postId);
-    public List<Like> findAllByUserId(int userId);
+    public List<Like> findAllByUserUserID(int userId);
     public Like findById(int likeID);
 }

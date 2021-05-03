@@ -62,8 +62,8 @@ public class LikeController {
      * @param like the new Like object to be inserted to the database
      * @return a confirmation message that the Like was inserted
      */
-    @PostMapping(value = "/post/{postId}/like")
-    public CustomResponseMessage insertNewLike(@PathVariable("postId") int postId, @RequestBody Like like){
+    @PostMapping(value = "/post/like")
+    public CustomResponseMessage insertNewLike( @RequestBody Like like){
 
         /*
         * Tested by Kevin Childs on 4/24/2021 at 8:12am
