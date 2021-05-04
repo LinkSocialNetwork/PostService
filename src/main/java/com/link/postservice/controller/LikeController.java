@@ -2,6 +2,7 @@ package com.link.postservice.controller;
 
 import com.link.postservice.model.CustomResponseMessage;
 import com.link.postservice.model.Like;
+import com.link.postservice.model.Notification;
 import com.link.postservice.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -75,8 +76,13 @@ public class LikeController {
         *   check if user already liked post
         * */
         try{
+            Notification n = new Notification();
+            n.setTriggeredId(like.getUser().getUserID());
+            n.setTargetId(like.getPost().getUser().getUserID());
+            n.setType("like");
+            n.setPostId(like.getPost().getPostId());
             RestTemplate rt = new RestTemplate();
-            rt.postForObject("http://localhost:9080/api/notificationservice/post/"+postId+"/like", like, Like.class);
+            rt.postForObject("http://localhost:9080/api/notificationservice/post/like", n, Notification.class);
         }catch(Exception e){
             e.printStackTrace();
         }
