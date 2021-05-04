@@ -76,7 +76,11 @@ public class LikeController {
         * */
         try{
             RestTemplate rt = new RestTemplate();
-            rt.postForObject("http://localhost:9080/api/notificationservice/post/"+postId+"/like", like, Like.class);
+            //pulled at 5/4 12:23 am and had issue with below
+            //when pulled: postID
+            //after fix: like.getPost().getPostId()
+            //this is a note in case I did something bad, but was giving me an error so temporarily changed
+            rt.postForObject("http://localhost:9080/api/notificationservice/post/"+like.getPost().getPostId()+"/like", like, Like.class);
         }catch(Exception e){
             e.printStackTrace();
         }

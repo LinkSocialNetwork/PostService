@@ -20,7 +20,7 @@ public interface PostDao extends JpaRepository<Post, Integer>{
     /** Authored by Sam Jenkins
      *
      */
-    public List<Post> findAllByUserUserID(int userId);
+    public Page<Post> findAllByUserUserID(Pageable pageable, int userId);
 
     public Post findById(int id);
 
