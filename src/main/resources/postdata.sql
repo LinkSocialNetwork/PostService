@@ -9,13 +9,5 @@ INSERT INTO posts_users (user_id, user_name) VALUES (8, 'admin8')
 INSERT INTO posts_users (user_id, user_name) VALUES (9, 'admin9')
 INSERT INTO posts_users (user_id, user_name) VALUES (10, 'admin10')
 
-INSERT INTO posts (post_content, user_id) VALUES ('post 1', 1)
-INSERT INTO posts (post_content, user_id) VALUES ('post 2', 1)
-INSERT INTO posts (post_content, user_id) VALUES ('post 3', 1)
-INSERT INTO posts (post_content, user_id) VALUES ('post 4', 1)
-
-INSERT INTO posts (post_content, user_id) VALUES ('post 1', 2)
-INSERT INTO posts (post_content, user_id) VALUES ('post 2', 2)
-
 
 

@@ -35,7 +35,7 @@ public class LikeService {
     }
 
     public List<Like> findAllByUserId(int userID){
-        return likeDao.findAllByUserId(userID);
+        return likeDao.findAllByUserUserID(userID);
     }
 
     public Like save(Like like){
@@ -65,7 +65,7 @@ public class LikeService {
      * @return List of Posts the user liked
      */
     public List<Post> getPostsLikedByUser(int userId) {
-        List<Like> likes = likeDao.findAllByUserId(userId);
+        List<Like> likes = likeDao.findAllByUserUserID(userId);
         List<Post> posts = new ArrayList<>();
         for (Like l : likes) {
             posts.add(l.getPost());

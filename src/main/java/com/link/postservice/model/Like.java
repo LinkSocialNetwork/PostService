@@ -23,35 +23,13 @@ public class Like {
     //Because no guarantee that a user that likes a post
     //will have created a post beforehand for the foreign key constraint
     //to be consistent
-    @Column(name = "user_id", nullable = false)
-    private int userId;
+    @ManyToOne(cascade =CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_FK")
     @JsonBackReference("postLikes")
     private Post post;
 
-    public int getLikeId() {
-        return likeId;
-    }
-
-    public void setLikeId(int likeId) {
-        this.likeId = likeId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
 }
