@@ -5,6 +5,7 @@ import com.link.postservice.model.Like;
 import com.link.postservice.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -73,6 +74,12 @@ public class LikeController {
         *   check if user id exists in user service
         *   check if user already liked post
         * */
+        try{
+            RestTemplate rt = new RestTemplate();
+            rt.postForObject("http://localhost:9080/api/notificationservice/post/"+postId+"/like", like, Like.class);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         likeService.save(like);
         return new CustomResponseMessage("Like was added.");
