@@ -9,11 +9,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "notifications")
 public class Notification {

@@ -5,6 +5,7 @@ import com.link.postservice.model.Like;
 import com.link.postservice.model.Notification;
 import com.link.postservice.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -75,14 +76,15 @@ public class LikeController {
         *   check if user id exists in user service
         *   check if user already liked post
         * */
+        Notification n = new Notification();
+        n.setTriggeredId(like.getUser().getUserID());
+        n.setTargetId(like.getPost().getUser().getUserID());
+        n.setType("like");
+        n.setPostId(like.getPost().getPostId());
         try{
-            Notification n = new Notification();
-            n.setTriggeredId(like.getUser().getUserID());
-            n.setTargetId(like.getPost().getUser().getUserID());
-            n.setType("like");
-            n.setPostId(like.getPost().getPostId());
             RestTemplate rt = new RestTemplate();
-            rt.postForObject("http://localhost:9080/api/notificationservice", n, Notification.class);
+            boolean b = rt.postForObject("http://localhost:9080/api/notificationservice", n, Boolean.class);
+            if(!b) new Exception("Notification service down");
         }catch(Exception e){
             e.printStackTrace();
         }
