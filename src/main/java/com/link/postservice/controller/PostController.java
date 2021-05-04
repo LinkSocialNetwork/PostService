@@ -64,7 +64,7 @@ public class PostController {
      */
     @GetMapping(value="/post/user/{userId}/page/{number}/temp")
     public List<Post> getPostsCreatedByUser(@PathVariable("userId") int userId, @PathVariable("number") int page) {
-        return postService.getPostsCreatedByUser(page,userId);
+        return postService.getPostsCreatedByUser(userId,page);
     }
 
     /**

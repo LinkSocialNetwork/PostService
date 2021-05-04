@@ -59,7 +59,7 @@ public class PostService {
             followingUserIDs.add(u.getUserID());
         }
         followingUserIDs.add(userId);
-        Page<Post> dynamicPost = postDao.findByUserUserIDIn(followingUserIDs, pages);
+        Page<Post> dynamicPost = postDao.findByUserUserIDInOrderByPostIdDesc(followingUserIDs, pages);
         return dynamicPost.getContent();
     }
 
@@ -74,10 +74,10 @@ public class PostService {
     /** Author: Sam Jenkins
      * Calls the Dao layer to retrieve posts created by a given user
      */
-    public List<Post> getPostsCreatedByUser(int page, int userId) {
+    public List<Post> getPostsCreatedByUser(int userId, int page) {
         System.out.println("//////////////////"+userId);
         Pageable pages = PageRequest.of(page, 3);
-        Page<Post> dynamicPost = postDao.findAllByUserUserID(pages, userId);
+        Page<Post> dynamicPost = postDao.findAllByUserUserIDOrderByPostIdDesc(userId, pages);
         System.out.println("souting dynamicPost");
         System.out.println(dynamicPost);
         return dynamicPost.getContent();
