@@ -82,7 +82,7 @@ public class LikeController {
             n.setType("like");
             n.setPostId(like.getPost().getPostId());
             RestTemplate rt = new RestTemplate();
-            rt.postForObject("http://localhost:9080/api/notificationservice/post/like", n, Notification.class);
+            rt.postForObject("http://localhost:9080/api/notificationservice", n, Notification.class);
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -20,7 +20,7 @@ public interface PostDao extends JpaRepository<Post, Integer>{
     /** Authored by Sam Jenkins
      *
      */
-    public List<Post> findAllByUserUserID(int userId);
+    public Page<Post> findAllByUserUserIDOrderByPostIdDesc(int userId, Pageable pageable);
 
     public Post findById(int id);
 
@@ -34,7 +34,7 @@ public interface PostDao extends JpaRepository<Post, Integer>{
     //pagination
     @Override
     public Page<Post> findAll(Pageable pageable);
-    public Page<Post> findByUserUserIDIn(ArrayList<Integer> followingUserIDs, Pageable aPageableObject);
+    public Page<Post> findByUserUserIDInOrderByPostIdDesc(ArrayList<Integer> followingUserIDs, Pageable aPageableObject);
 
 
 }
