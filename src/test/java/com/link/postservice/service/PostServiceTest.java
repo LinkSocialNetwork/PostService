@@ -14,6 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,4 +167,48 @@ public class PostServiceTest {
         assertEquals(tempList, actualReturn);
     }
 
+    @Test
+    void getTwentyPosts() {
+        //Create two post for Mockito to test
+//        List<Post> tempList = new ArrayList<>();
+//        Post post1 = new Post();
+//        post1.setPostId(1);
+//        post1.setUser(new User(1, "MeMe", "MeMe.pic"));
+//        post1.setPostContent("blablabla");
+//        post1.setPostImageUrl("fdafdsa");
+//        post1.setYoutubeUrl("dfdfdd");
+//
+//        Post post2 = new Post();
+//        post2.setPostId(2);
+//        post2.setUser(new User(2, "YouYou", "YouYou.pic"));
+//        post2.setPostContent("blablabla");
+//        post2.setPostImageUrl("fdafdsa");
+//        post2.setYoutubeUrl("dfdfdd");
+//
+//        tempList.add(post1);
+//        tempList.add(post2);
+//
+//        Pageable pages = PageRequest.of(0, 3);
+////        Page<Post> pa= new ArrayList<Post>();
+//        List<Page<Post>> pa = new ArrayList<>();
+//        pa.addAll(tempList);
+//
+//        //When find all is called in postDao return the hardcoded array above
+//        Mockito.when(postDao.findAll(pages)).thenReturn(tempList);
+//
+//        List<Post> actualReturn = postService.getAllPosts();
+//
+//        Mockito.verify(postDao).findAll();
+//
+//        //test values are the same
+//        assertEquals(tempList, actualReturn);
+    }
+
+    @Test
+    void getFollowingPosts() {
+    }
+
+    @Test
+    void testGetPostsCreatedByUser() {
+    }
 }
