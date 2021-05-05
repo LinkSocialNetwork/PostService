@@ -36,17 +36,19 @@ class ImageControllerTest {
 
     @Test
     void uploadImg() throws IOException {
-        byte[] testContent = new byte[2];
-        MockMultipartFile testFile = new MockMultipartFile("originalFileName", testContent);
+
+        /*Assign*/
+        MockMultipartFile testFile = new MockMultipartFile("originalFileName", new byte[10]);
         String keyName = testFile.getOriginalFilename();
+        String bucketUrl = "https://linksocialnetworkbucket.s3.us-east-2.amazonaws.com/";
+        CustomResponseMessage expectedResponse = new CustomResponseMessage(bucketUrl+keyName);
 
-        Mockito.doNothing().when(s3Service).uploadFile(keyName, testFile);
+        /*Act*/
+        CustomResponseMessage actualResponse = this.imageController.uploadImg(testFile);
 
-        CustomResponseMessage actualReturn = imageController.uploadImg(testFile);
-
+        /*Assert*/
+        assertEquals(expectedResponse,actualResponse);
         Mockito.verify(s3Service).uploadFile(keyName, testFile);
-
-        assertEquals(new CustomResponseMessage(keyName), actualReturn);
 
     }
 }

@@ -18,7 +18,6 @@ public class CommentController {
 
     static {
         loggy.setLevel(Level.ALL);
-        //loggy.setLevel(Level.ERROR);
     }
 
     /**
@@ -28,9 +27,14 @@ public class CommentController {
      */
     @PostMapping(value = "/comment")
     public CustomResponseMessage createNewComment(@RequestBody Comment newComment){
-        commentService.addComment(newComment);
-        loggy.info("Inserted a new comment into the database");
-        return new CustomResponseMessage("success");
+        try {
+            commentService.addComment(newComment);
+            return new CustomResponseMessage("success");
+        }catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("IN THE CATCH BLOCK");
+            loggy.info("Error has occurred when creating a comment: " + e);
+            return new CustomResponseMessage("an error has occurred");
+        }
     }
 
 
