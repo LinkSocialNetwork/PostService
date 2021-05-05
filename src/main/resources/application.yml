@@ -1,0 +1,37 @@
+#GATEWAY'S CONFIG
+server:
+  port: 0
+spring:
+  datasource:
+    url: jdbc:h2:file:./postservice/myh2database/myh2file
+    password: sa
+    username: mypass
+    driverClassName: org.h2.Driver
+    data: classpath:./postdata.sql
+    initialize: true
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  application:
+    name: postservice
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9999/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id:  ${spring.application.name}:${random.value}
+    preferIpAddress: true
+

@@ -1,0 +1,14 @@
+2021-04-24 07:22:58 INFO  AccountController:53 - The successful creation of a user with username: yaboikev.
+2021-04-24 07:38:50 INFO  AccountController:53 - The successful creation of a user with username: yaboikev.
+2021-04-24 07:44:57 INFO  AccountController:53 - The successful creation of a user with username: yaboikev.
+2021-04-25 11:11:33 INFO  UserController:142 - The deletion of a user with user id: 1.
+2021-04-25 11:14:28 INFO  UserController:125 - The failed update of a user with username: yaboikev.
+2021-04-25 11:16:36 INFO  UserController:125 - The failed update of a user with username: yaboikev.
+2021-04-25 11:22:05 INFO  AccountController:53 - The successful creation of a user with username: yaboikevss.
+2021-04-25 11:22:49 INFO  AccountController:58 - The failed creation of a user with username: yaboikevss.
+2021-04-25 11:27:18 INFO  AccountController:80 - Login: can't find username! Received: yaboikevsssss
+2021-04-25 11:45:15 INFO  AccountController:53 - The successful creation of a user with username: yaboikevss.
+2021-04-25 16:31:37 INFO  AccountController:79 - Login: can't find username! Received: yaboikevsssss
+2021-04-25 16:32:10 INFO  AccountController:79 - Login: can't find username! Received: yaboikevsssss
+2021-04-25 17:16:31 INFO  AccountController:79 - Login: can't find username! Received: yaboikevsssss
+2021-04-25 18:23:13 INFO  AccountController:79 - Login: can't find username! Received: null
