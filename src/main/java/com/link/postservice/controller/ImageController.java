@@ -18,20 +18,14 @@ import java.io.IOException;
 public class ImageController {
 
     private S3Service s3Service;
-//    final static Logger loggy = Logger.getLogger(UserController.class);
-//    static {
-//        loggy.setLevel(Level.ALL);
-//        //loggy.setLevel(Level.ERROR);
-//    }
 
     /**
      * Image endpoint that converts and passes an image file to be stored in an s3 bucket.
      * @param file Image file from HTTP request body (form-data).
      * @return String containing the file name that was uploaded.
-     * @throws IOException
      */
     @PostMapping("/image")
-    public CustomResponseMessage uploadImg(@RequestParam("file") MultipartFile file) throws IOException {
+    public CustomResponseMessage uploadImg(@RequestParam("file") MultipartFile file) {
         String keyName = file.getOriginalFilename();
         String bucketUrl = "https://linksocialnetworkbucket.s3.us-east-2.amazonaws.com/";
 
@@ -44,11 +38,4 @@ public class ImageController {
         this.s3Service = s3Service;
     }
 
-    public S3Service getS3Service() {
-        return s3Service;
-    }
-
-    public void setS3Service(S3Service s3Service) {
-        this.s3Service = s3Service;
-    }
 }
