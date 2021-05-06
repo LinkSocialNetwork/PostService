@@ -31,7 +31,6 @@ public class CommentController {
             commentService.addComment(newComment);
             return new CustomResponseMessage("success");
         }catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println("IN THE CATCH BLOCK");
             loggy.info("Error has occurred when creating a comment: " + e);
             return new CustomResponseMessage("an error has occurred");
         }

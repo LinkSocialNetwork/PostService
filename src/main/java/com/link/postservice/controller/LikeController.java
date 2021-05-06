@@ -5,7 +5,6 @@ import com.link.postservice.model.Like;
 import com.link.postservice.model.Notification;
 import com.link.postservice.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -81,7 +80,6 @@ public class LikeController {
                 this.restTemplate = new RestTemplate();
 
             boolean b = this.restTemplate.postForObject("http://localhost:9080/api/notificationservice", n, Boolean.class);
-            System.out.println("B: " + b);
             if(!b) return new CustomResponseMessage("Notification service down");
         }catch(Exception e){
             e.printStackTrace();

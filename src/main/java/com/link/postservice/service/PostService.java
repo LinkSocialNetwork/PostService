@@ -1,6 +1,5 @@
 package com.link.postservice.service;
 
-//import com.link.postservice.dao.PostDaoImpl;
 
 import com.link.postservice.dao.PostDao;
 import com.link.postservice.model.Post;
@@ -12,10 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 @Service("PostService")
@@ -50,7 +47,6 @@ public class PostService {
         RestTemplate restTemplate = new RestTemplate();
         List<User> followingUsers = new ArrayList<>();
         followingUsers = Arrays.asList(restTemplate.getForEntity("http://localhost:9080/api/userservice/follow/followee/"+userId, User[].class).getBody());
-        System.out.println(followingUsers);
         Pageable pages = PageRequest.of(page, 3);
         //TODO: Change so this makes a request instead of "new ArrayList<>(Arrays.asList(1,3))"
 //        ArrayList<Integer> followingUserIDs = new ArrayList<>(Arrays.asList(1,3));
@@ -75,18 +71,11 @@ public class PostService {
      * Calls the Dao layer to retrieve posts created by a given user
      */
     public List<Post> getPostsCreatedByUser(int userId, int page) {
-        System.out.println("//////////////////"+userId);
         Pageable pages = PageRequest.of(page, 3);
         Page<Post> dynamicPost = postDao.findAllByUserUserIDOrderByPostIdDesc(userId, pages);
-        System.out.println("souting dynamicPost");
-        System.out.println(dynamicPost);
         return dynamicPost.getContent();
     }
 
-//    public PostService(PostDaoImpl postDao) {
-//        this.postDao = postDao;
-//    }
-//
     public Post getPostByID(int id){
         return postDao.findById(id);
     }

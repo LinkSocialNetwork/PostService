@@ -25,11 +25,6 @@ import java.io.InputStream;
 @Service("s3ServiceConfig")
 public class S3Service {
 
-//    final static Logger loggy = Logger.getLogger(UserController.class);
-//    static {
-//        loggy.setLevel(Level.ALL);
-//        //loggy.setLevel(Level.ERROR);
-//    }
 
     private String awsID = System.getenv("AWS_ID");
     private String awsKey = System.getenv("AWS_KEY");
@@ -53,16 +48,9 @@ public class S3Service {
             s3Client.putObject(new PutObjectRequest(bucketName, keyName, file.getInputStream(), new ObjectMetadata()));
 
         } catch (AmazonServiceException ase) {
-//            loggy.info("Caught an AmazonServiceException from PUT requests, rejected reasons:");
-//            loggy.info("Error Message:    " + ase.getMessage());
-//            loggy.info("HTTP Status Code: " + ase.getStatusCode());
-//            loggy.info("AWS Error Code:   " + ase.getErrorCode());
-//            loggy.info("Error Type:       " + ase.getErrorType());
-//            loggy.info("Request ID:       " + ase.getRequestId());
+
             throw ase;
         } catch (AmazonClientException ace) {
-//            loggy.info("Caught an AmazonClientException: ");
-//            loggy.info("Error Message: " + ace.getMessage());
             throw ace;
         } catch (IOException e) {
             e.printStackTrace();

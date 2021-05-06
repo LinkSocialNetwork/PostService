@@ -47,7 +47,6 @@ public class UserController {
     @PutMapping("/updateUser")
     public void updateUser(@RequestBody User user) {
 
-        System.out.println("UPDATE USER" + user);
         userService.updateUser(user);
     }
 
