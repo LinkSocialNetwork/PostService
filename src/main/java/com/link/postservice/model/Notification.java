@@ -39,7 +39,6 @@ public class Notification {
     @Column(name="date")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy HH:mm:ss")
     private Date date;
 
 }
