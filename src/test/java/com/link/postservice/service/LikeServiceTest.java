@@ -5,6 +5,7 @@ import com.link.postservice.dao.LikeDao;
 import com.link.postservice.model.Comment;
 import com.link.postservice.model.Like;
 import com.link.postservice.model.Post;
+import com.link.postservice.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,7 +38,8 @@ public class LikeServiceTest {
     void deleteLike() {
 
         Post aPost = new Post();
-        Like aLike = new Like(1,1,aPost);
+        User aUser = new User();
+        Like aLike = new Like(1,aUser,aPost);
         Like aNullLike = null;
         likeService.delete(aLike.getLikeId());
         Mockito.verify(likeDao).deleteById(aLike.getLikeId());
@@ -49,7 +51,8 @@ public class LikeServiceTest {
     @Test
     void insertLike(){
         Post aPost = new Post();
-        Like aLike = new Like(1,1,aPost);
+        User aUser = new User();
+        Like aLike = new Like(1,aUser,aPost);
         Mockito.when(likeDao.save(aLike)).thenReturn(aLike);
         assertEquals(aLike, likeService.save(aLike));
     }
