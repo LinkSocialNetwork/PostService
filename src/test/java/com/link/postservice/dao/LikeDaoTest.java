@@ -79,22 +79,25 @@ class LikeDaoTest {
     void tearDown() {
 
 
-        postDao.deleteAll();
-        likeDao.deleteAll();
+//        postDao.deleteAll();
+//        likeDao.deleteAll();
 //        expectedLikes.clear();
     }
 
     @Test
     void findAllByPostPostId() {
         User user1 = userDao.findById(1);
+        User user2 = userDao.findById(2);
 
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
         Post post1 = new Post(1, user1, "test", "test", "test", "test", likeList, comsList);
+        Post post2 = new Post(2, user1, "test", "test", "test", "test", likeList, comsList);
 
         postDao.save(post1);
+        postDao.save(post2);
 
-        Like expectedLike = new Like(1, user1, post1);
+        Like expectedLike = new Like(1, user2, post2);
 
         List<Like> expectedLikes = new ArrayList<>();
 
@@ -114,21 +117,26 @@ class LikeDaoTest {
     @Test
     void findAllByUserUserID() {
         User user1 = userDao.findById(1);
+        User user2 = userDao.findById(2);
 
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
-        Post post1 = new Post(1, user1, "test", "test", "test", "test", likeList, comsList);
+
+        //this is a bad solution. should delete old posts before running this test
+        Post post1 = new Post(3, user1, "test", "test", "test", "test", likeList, comsList);
+        Post post2 = new Post(4, user1, "test2", "test2", "test2", "test2", likeList, comsList);
 
         postDao.save(post1);
+        postDao.save(post2);
 
-        Like expectedLike = new Like(1, user1, post1);
+        Like expectedLike = new Like(1, user2, post2);
 
         List<Like> expectedLikes = new ArrayList<>();
 
         expectedLikes.add(expectedLike);
 
         likeDao.save(expectedLike);
-        List<Like> actualLikes = likeDao.findAllByUserUserID(1);
+        List<Like> actualLikes = likeDao.findAllByUserUserID(2);
 
         expectedLikes.get(0).setLikeId(1);
 
