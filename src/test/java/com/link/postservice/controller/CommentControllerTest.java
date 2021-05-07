@@ -33,13 +33,16 @@ class CommentControllerTest {
     }
 
     @Test
-    void createNewComment() {
+    void createSuccessfulComment() {
+
+        /*Assign*/
         Comment comment = new Comment();
-        //Mockito.when(commentService.addComment(comment)).thenReturn(comment);
-        commentController.createNewComment(comment);
 
+        /*Act*/
+        CustomResponseMessage actualResult = this.commentController.createNewComment(comment);
+
+        /*Assert*/
         Mockito.verify(commentService).addComment(comment);
-
-        assertEquals(new CustomResponseMessage("success"), commentController.createNewComment(comment));
     }
+
 }

@@ -28,7 +28,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class PostControllerTest {
 
-
     PostController postController;
 
     @Mock
@@ -47,6 +46,7 @@ class PostControllerTest {
 
     @Test
     void insertPost(){
+        /*Assign*/
         User user = new User();
         List<Like> likes = new ArrayList<Like>();
         List<Comment> comments= new ArrayList<Comment>();
@@ -61,22 +61,32 @@ class PostControllerTest {
                 comments
         );
 
+        /*Act*/
+        Mockito.doNothing().when(postService).save(post);
         postController.insertPost(post);
-        Mockito.verify(postService).save(post);
+
+        /*Assert*/
+        Mockito.verify(postService, Mockito.times(1)).save(post);
     }
 
     @Test
     void updatePost() {
+        /*Assign*/
         Post post = new Post();
 
+        /*Act*/
+        Mockito.doNothing().when(postService).updatePost(post);
         postController.updatePost(post);
 
-        Mockito.verify(postService).updatePost(post);
+        /*Assert*/
+        Mockito.verify(postService, Mockito.times(1)).updatePost(post);
 
     }
 
     @Test
     void getPostsCreatedByUser() {
+
+        /*Assign*/
         User u = new User();
         u.setUserID(1);
 
@@ -95,34 +105,36 @@ class PostControllerTest {
         postList.add(p1);
         postList.add(p2);
 
-//        Mockito.when(postService.getPostsCreatedByUser(u.getUserID())).thenReturn(postList);
-//
-//        List<Post> actualReturn = postController.getPostsCreatedByUser(u.getUserID());
-//
-//        Mockito.verify(postService).getPostsCreatedByUser(u.getUserID());
-//
-//        assertEquals(postList, actualReturn);
+        /*Act*/
+        Mockito.when(postService.getPostsCreatedByUser(u.getUserID(),1)).thenReturn(postList);
+        List<Post> actualReturn = postController.getPostsCreatedByUser(u.getUserID(),1);
+        Mockito.verify(postService).getPostsCreatedByUser(u.getUserID(),1);
+
+        /*Assert*/
+        assertEquals(postList, actualReturn);
     }
 
     @Test
     void getPostById() {
+        /*Assign*/
         User myUser = new User();
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
         Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
 
+        /*Act*/
         Mockito.when(postService.getPostByID(myPost.getPostId())).thenReturn(myPost);
-
         Post testPost = postController.getPostById(1);
-
         Mockito.verify(postService).getPostByID(1);
 
+        /*Assert*/
         assertEquals(myPost, testPost);
-
     }
 
     @Test
     void getAllPostsTest() {
+
+        /*Assign*/
         User myUser = new User();
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
@@ -132,18 +144,19 @@ class PostControllerTest {
         postList.add(myPost);
         postList.add(myPost2);
 
+        /*Act*/
         Mockito.when(postService.getAllPosts()).thenReturn(postList);
-
         List<Post> actualList = postController.getAllPosts();
-
         Mockito.verify(postService).getAllPosts();
 
+        /*Assert*/
         assertEquals(actualList, postList);
 
     }
 
     @Test
     void getTwentyPostsTest() {
+        /*Assign*/
         User myUser = new User();
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
@@ -159,17 +172,18 @@ class PostControllerTest {
         postList.add(myPost3);
         postList.add(myPost4);
 
-//        Mockito.when(postService.getFollowingPosts(0)).thenReturn(postList);
-//        Mockito.when(postService.getFollowingPosts(1)).thenReturn(postList2);
 
+        /*Act*/
+        Mockito.when(postService.getFollowingPosts(0,1)).thenReturn(postList);
+        Mockito.when(postService.getFollowingPosts(1,1)).thenReturn(postList2);
+        List<Post> actualList = postController.getTwentyPosts(0,1);
+        List<Post> actualList2 = postController.getTwentyPosts(1,1);
 
-//        List<Post> acutalList = postController.getTwentyPosts(0);
-//        Mockito.verify(postService).getFollowingPosts(0);
-//        assertEquals(acutalList,postList);
-//
-//        List<Post> acutalList2 = postController.getTwentyPosts(1);
-//        Mockito.verify(postService).getFollowingPosts(1);
-//        assertEquals(acutalList2, postList2);
+        /*Assert*/
+        Mockito.verify(postService).getFollowingPosts(0,1);
+        Mockito.verify(postService).getFollowingPosts(1,1);
+        assertEquals(actualList,postList);
+        assertEquals(actualList2, postList2);
 
     }
 

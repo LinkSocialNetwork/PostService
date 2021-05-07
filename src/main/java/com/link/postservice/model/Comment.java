@@ -22,9 +22,9 @@ public class Comment {
 
     @Column(name = "comment_content")
     private String commentContent;
+
     @Column(name = "commented_at")
     private String commentedAt;
-
 
     @ManyToOne
     @JoinColumn(name="user_id")
