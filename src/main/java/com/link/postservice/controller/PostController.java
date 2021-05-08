@@ -40,7 +40,7 @@ public class PostController {
      * This endpoint creates a new post object in the posts table.
      * old url: /newposts
      */
-    @PostMapping(value="/post")
+    @PostMapping(value="/protected/post")
     public void insertPost(@RequestBody Post post){
         postService.save(post);
     }
@@ -52,7 +52,7 @@ public class PostController {
      *
      * old url: /deletePost
      */
-    @DeleteMapping(value="/post/{postId}")
+    @DeleteMapping(value="/protected/post/{postId}")
     public void deletePost (@PathVariable("postId") int postId){
         postService.deletePost(postId);
     }
@@ -83,7 +83,7 @@ public class PostController {
      * MAKE SURE TO PASS IN THE FULLY UPDATED OBJECT.
      * @param changedPost The full post object that contains all of the update information
      */
-    @PutMapping(value = "/post")
+    @PutMapping(value = "/protected/post")
     public void updatePost(@RequestBody Post changedPost){
         postService.updatePost(changedPost);
     }

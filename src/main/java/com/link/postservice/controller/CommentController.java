@@ -28,7 +28,7 @@ public class CommentController {
      * @param newComment
      * @return
      */
-    @PostMapping(value = "/comment")
+    @PostMapping(value = "/protected/comment")
     public CustomResponseMessage createNewComment(@RequestBody Comment newComment){
         Notification n = new Notification();
         n.setTriggeredId(newComment.getCommentWriter().getUserID());
