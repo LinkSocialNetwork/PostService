@@ -81,7 +81,6 @@ public class LikeController {
                 this.restTemplate = new RestTemplate();
 
             boolean b = this.restTemplate.postForObject("http://localhost:9080/api/notificationservice", n, Boolean.class);
-            System.out.println("B: " + b);
             if(!b) return new CustomResponseMessage("Notification service down");
         }catch(Exception e){
             e.printStackTrace();

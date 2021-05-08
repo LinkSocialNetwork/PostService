@@ -22,7 +22,7 @@ public interface PostDao extends JpaRepository<Post, Integer>{
      */
     public Page<Post> findAllByUserUserIDOrderByPostIdDesc(int userId, Pageable pageable);
 
-    public Post findById(int id);
+    public Post findByPostId(int id);
 
     /** Author: Michael Loutfi
      * CRUD method (READ) - Uses hibernate to access Posts table from database and grabs all
