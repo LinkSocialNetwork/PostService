@@ -42,6 +42,15 @@ public class LikeServiceTest {
         List<Like> likes = new ArrayList<>();
         User newUser = new User();
         Post aPost = new Post();
+
+        User aUser = new User();
+        Like aLike = new Like(1,aUser,aPost);
+        Like aNullLike = null;
+        likeService.delete(aLike.getLikeId());
+        Mockito.verify(likeDao).deleteById(aLike.getLikeId());
+        aLike = likeService.getLikeById(aLike.getLikeId());
+        assertEquals(aNullLike, aLike);
+
         Like newLike = new Like(1, newUser, aPost);
         likes.add(newLike);
 
@@ -87,6 +96,7 @@ public class LikeServiceTest {
         Mockito.when(likeDao.findAllByUserUserID(1)).thenReturn(likes);
         List<Like> actualOutput = likeService.findAllByUserId(1);
 
+
         //Assert
         Mockito.verify(likeDao).findAllByUserUserID(1);
         assertEquals(likes, actualOutput);
@@ -99,6 +109,12 @@ public class LikeServiceTest {
         List<Comment> comments = new ArrayList<>();
         User newUser = new User();
         Post aPost = new Post();
+
+        User aUser = new User();
+        Like aLike = new Like(1,aUser,aPost);
+        Mockito.when(likeDao.save(aLike)).thenReturn(aLike);
+        assertEquals(aLike, likeService.save(aLike));
+
         Like newLike = new Like(1, newUser, aPost);
 
         //Act
@@ -112,6 +128,7 @@ public class LikeServiceTest {
 
     @Test
     void testGetAllLikesByPostID() {
+
     }
 
     @Test
