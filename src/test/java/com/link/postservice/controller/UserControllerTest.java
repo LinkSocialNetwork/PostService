@@ -38,9 +38,9 @@ class UserControllerTest {
     void getAllUsers() {
         /*Assign*/
         List<User> expectedResult = new ArrayList<>();
-        expectedResult.add(new User(1,"username1","/user1"));
-        expectedResult.add(new User(2,"username2","/user2"));
-        expectedResult.add(new User(3,"username3","/user3"));
+        expectedResult.add(new User(1,"username1","/user1",0));
+        expectedResult.add(new User(2,"username2","/user2",0));
+        expectedResult.add(new User(3,"username3","/user3",0));
 
         /*Act*/
         Mockito.when(userService.getAll()).thenReturn(expectedResult);
@@ -56,7 +56,7 @@ class UserControllerTest {
     @Test
     void createUser() {
         /*Assign*/
-        User expectedUser= new User(1,"username1","/user1");
+        User expectedUser= new User(1,"username1","/user1",0);
 
         /*Act*/
         Mockito.when(userService.duplicateUser(expectedUser)).thenReturn(expectedUser);
@@ -69,7 +69,7 @@ class UserControllerTest {
     @Test
     void updateUser() {
         /*Assign*/
-        User user = new User(1,"username1","/user1");
+        User user = new User(1,"username1","/user1",0);
 
         /*Act*/
         Mockito.doNothing().when(userService).updateUser(user);
@@ -82,7 +82,7 @@ class UserControllerTest {
     @Test
     void deleteUser() {
         /*Assign*/
-        User user = new User(1,"username1","/user1");
+        User user = new User(1,"username1","/user1",0);
 
         /*Act*/
         Mockito.doNothing().when(userService).deleteUser(1);

@@ -50,7 +50,7 @@ class UserServiceTest {
 
     @Test
     void updateUser() {
-        User user = new User(6, "seven", "/rrrrrrrrrrr");
+        User user = new User(6, "seven", "/rrrrrrrrrrr",0);
         userService.updateUser(user);
     }
 

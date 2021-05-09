@@ -124,11 +124,11 @@ public class PostServiceTest {
         List<Comment> comsList = new ArrayList<>();
         Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
 
-        Mockito.when(postDao.findById(myPost.getPostId())).thenReturn(myPost);
+        Mockito.when(postDao.findByPostId(myPost.getPostId())).thenReturn(myPost);
 
         Post testPost = postService.getPostByID(1);
 
-        Mockito.verify(postDao).findById(1);
+        Mockito.verify(postDao).findByPostId(1);
 
         assertEquals(myPost, testPost);
     }
@@ -141,14 +141,14 @@ public class PostServiceTest {
         List<Post> tempList = new ArrayList<>();
         Post post1 = new Post();
         post1.setPostId(1);
-        post1.setUser(new User(1, "MeMe", "MeMe.pic"));
+        post1.setUser(new User(1, "MeMe", "MeMe.pic",0));
         post1.setPostContent("blablabla");
         post1.setPostImageUrl("fdafdsa");
         post1.setYoutubeUrl("dfdfdd");
 
         Post post2 = new Post();
         post2.setPostId(2);
-        post2.setUser(new User(2, "YouYou", "YouYou.pic"));
+        post2.setUser(new User(2, "YouYou", "YouYou.pic",0));
         post2.setPostContent("blablabla");
         post2.setPostImageUrl("fdafdsa");
         post2.setYoutubeUrl("dfdfdd");
