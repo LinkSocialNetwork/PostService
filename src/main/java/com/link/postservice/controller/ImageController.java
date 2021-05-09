@@ -18,7 +18,7 @@ public class ImageController {
      * @param file Image file from HTTP request body (form-data).
      * @return String containing the file name that was uploaded.
      */
-    @PostMapping("/image")
+    @PostMapping("/protected/image")
     public CustomResponseMessage uploadImg(@RequestParam("file") MultipartFile file) {
         String keyName = file.getOriginalFilename();
         String bucketUrl = "https://linksocialnetworkbucket.s3.us-east-2.amazonaws.com/";

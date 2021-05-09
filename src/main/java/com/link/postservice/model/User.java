@@ -23,9 +23,12 @@ public class User {
     @Column(name= "user_name", unique = true, nullable = false)
     private String userName;
 
-    @ColumnDefault(value = "'/default_pp.png'")
     @Column(name= "profile_img_url", unique = false)
     private String profileImg;
+
+    @ColumnDefault("0")
+    @Column(name= "check_password")
+    private int checkPassword;
 
 
 }

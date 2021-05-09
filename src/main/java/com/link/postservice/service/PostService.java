@@ -77,7 +77,7 @@ public class PostService {
     }
 
     public Post getPostByID(int id){
-        return postDao.findById(id);
+        return postDao.findByPostId(id);
     }
 
 

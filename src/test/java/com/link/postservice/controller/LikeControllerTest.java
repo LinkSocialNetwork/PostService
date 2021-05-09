@@ -39,7 +39,7 @@ class LikeControllerTest {
     void getAllLikes() {
         /*Assign*/
         List<Like> expectedResult = new ArrayList<>();
-        User user = new User(1, "username","/profileImg");
+        User user = new User(1, "username","/profileImg",0);
         Post post = new Post(1, user, "THIS IS THE CONTENT", "THIS IS IMAGE URL","YOUTUBE URL","POSTED AT", null, null);
         Like like = new Like (1, user, post);
         expectedResult.add(like);
@@ -68,7 +68,7 @@ class LikeControllerTest {
     @Test
     void insertNewLikeWithNotification() {
         /*Assign*/
-        User user = new User(1, "username","/profileImg");
+        User user = new User(1, "username","/profileImg",0);
         Post post = new Post(1, user, "THIS IS THE CONTENT", "THIS IS IMAGE URL","YOUTUBE URL","POSTED AT", null, null);
         Like like = new Like (1, user, post);
         Notification n = new Notification();
@@ -92,7 +92,7 @@ class LikeControllerTest {
     @Test
     void insertNewLikeWithNotificationServiceDown() {
         /*Assign*/
-        User user = new User(1, "username","/profileImg");
+        User user = new User(1, "username","/profileImg",0);
         Post post = new Post(1, user, "THIS IS THE CONTENT", "THIS IS IMAGE URL","YOUTUBE URL","POSTED AT", null, null);
         Like like = new Like (1, user, post);
         Notification n = new Notification();

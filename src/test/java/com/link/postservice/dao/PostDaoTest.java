@@ -30,16 +30,16 @@ class PostDaoTest {
     }
 
     @Test
-    void findById() {
+    void findByPostId() {
 
-        User myUser = new User(1,"a","a");
+        User myUser = new User(1,"a","a",0);
         List<Like> likeList = new ArrayList<>();
         List<Comment> comsList = new ArrayList<>();
         Post myPost = new Post(1, myUser, "test", "test", "test", "test", likeList, comsList);
 
         postDao.save(myPost);
 
-        assertEquals(myPost, postDao.findById(1));
+        assertEquals(myPost, postDao.findByPostId(1));
 
     }
 }

@@ -56,7 +56,7 @@ public class LikeController {
      * @param likeId the Like object to be deleted from the database
      * @return A String containing a confirmation message
      */
-    @DeleteMapping(value = "/like/{likeId}")
+    @DeleteMapping(value = "/protected/like/{likeId}")
     public CustomResponseMessage deleteLike(@PathVariable("likeId") int likeId){
         likeService.delete(likeId);
         return new CustomResponseMessage("Like was deleted.");
@@ -67,7 +67,7 @@ public class LikeController {
      * @param like the new Like object to be inserted to the database
      * @return a confirmation message that the Like was inserted
      */
-    @PostMapping(value = "/post/like")
+    @PostMapping(value = "/protected/post/like")
     public CustomResponseMessage insertNewLike( @RequestBody Like like){
         Notification n = new Notification();
         n.setTriggeredId(like.getUser().getUserID());
